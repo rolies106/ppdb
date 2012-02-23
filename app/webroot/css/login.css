@@ -1,0 +1,176 @@
+/* font-size */
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'Helveticaneue';
+	src: url('../fonts/helveticaneue-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'Helveticaneue';
+	src: url(//:) format('no404'), url('../fonts/helveticaneue-webfont.woff') format('woff'), url('../fonts/helveticaneue-webfont.ttf') format('truetype'), url('../fonts/helveticaneue-webfont.svg#webfontyrS84fGM') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.helveticaneue{
+    font-family:'Helveticaneue', Arial, Verdana;
+}
+
+body{
+    background:#F2F2F2;
+    font-size:0.75em;
+}
+
+body, p, td, th, li {
+    font-family:Arial, "Helvetica Neue", Helvetica, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, sans serif;
+}
+
+/* Standard Definitions
+----------------------------------------*/
+.left 		{float:left;}
+.right 		{float:right;}
+.clearThis 	{clear:both;}
+.small		{font-size:.625em;}
+.large		{font-size:1em;}
+.soft		{color:#D3D3D3;}
+.hide		{display:none;}
+p.last		{margin-bottom:0px;}
+.alignleft {
+   float: left;
+   margin-right:20px;
+}
+.alignright {
+   float: right;
+}
+.overhidden{overflow:hidden;}
+
+.sizeof40{font-size:40px;}
+.sizeof36{font-size:36px;}
+
+.header{margin-bottom:17px;}
+.container_login{padding:50px 40px 0 40px;}
+.header_title{overflow:hidden;}
+.header_title{
+    background:url("../img/header_title.jpg") 0 0 no-repeat transparent;
+    width:220px;
+    height:76px;
+    text-indent:-999px;
+    overflow:hidden;
+    margin-top:32px;
+}
+.login_form{
+    background:url("../img/login_box.jpg") 0 0 no-repeat;
+    width:387px;
+    height:228px;
+    overflow:hidden;
+}
+.login_title{
+    background:url("../img/login_title.jpg") 0 0 no-repeat;
+    width:114px;
+    height:31px;
+    overflow:hidden;
+    text-indent:-9999px;
+    margin:12px auto 14px auto;
+}
+.input{
+    position:relative;
+    width:270px;
+    margin:10px auto;
+    border:1px solid #E8E8E8;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    background: #D5D5D5; /* Fallback background color for non supported browsers */		
+    background-image: -moz-linear-gradient(top, #D5D5D5, #F5F5F5); /* Firefox 3.6 */
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #F5F5F5),color-stop(1, #D5D5D5)); /* Safari & Chrome */
+    -webkit-box-shadow: 1px 1px #fff;
+    -moz-box-shadow: 1px 1px #fff;
+    box-shadow: 1px 1px #fff;
+}
+.input input{
+    width:90%;
+    padding:10px;
+    font-size:18px;
+    text-align:center;
+    background:none;
+    border:medium none;
+    color:#064070 !important;
+    outline:none;
+    text-shadow:1px 1px #0ebbe6;
+}
+.submit{
+    overflow:hidden;
+    margin-top:9px;
+}
+.submit input{
+    background:url("../img/btn_login.png") 0 0 no-repeat;
+    color:#D7D7D7;
+    width:95px;
+    height:32px;
+    border:none medium;
+    font-size:14px;
+    text-transform:uppercase;
+    padding-left:15px;
+    float:right;
+    margin-right:26px;
+}
+.remember{
+    padding-left:26px;
+}
+.remember input{margin-right:5px;}
+
+/* all */
+::-webkit-input-placeholder { 
+    color:#064070;
+    text-shadow:1px 1px #0ebbe6;
+}
+input:-moz-placeholder {
+    color:#064070;
+    text-shadow:1px 1px #0ebbe6;
+}
+
+/** Notices and Errors **/
+div.message {
+	clear: both;
+	color: #fff;
+	font-size: 140%;
+	font-weight: bold;
+	margin: 0 0 1em 0;
+	background: #c73e14;
+	padding: 5px;
+}
+div.error-message {
+	clear: both;
+	color: #fff;
+	font-weight: bold;
+	background: #c73e14;
+}
+p.error {
+	background-color: #e32;
+	color: #fff;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+p.error em {
+	color: #000;
+	font-weight: normal;
+	line-height: 140%;
+}
+.notice {
+	background: #ffcc00;
+	color: #000;
+	display: block;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+.success {
+	background: green;
+	color: #fff;
+}

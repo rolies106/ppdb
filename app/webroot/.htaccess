@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+<IfModule mod_headers.c>
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$"> 
+	Header set Expires "Thu, 26 May 2011 20:00:00 GMT" 
+	Header unset ETag 
+	FileETag None 
+	</FilesMatch> 
+</IfModule>
