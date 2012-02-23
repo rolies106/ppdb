@@ -2,3 +2,5 @@
 *~
 *.less
 !empty
+app/tmp/*
+app/webroot/img/cache/*
