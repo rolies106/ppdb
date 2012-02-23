@@ -351,8 +351,39 @@ class RegistrationsController extends AppController {
         $option['keywords'] = __('PPDB, Online, PSB',true);
         $option['category'] = __('Hasil Data Siswa',true);
         
-        #$conditionsReg = array('Registration.tahun_pelajaran' => $option['tahunPelajaran'], 'Registration.passed_by_register' => 1);
         $conditionsReg = array('Registration.tahun_pelajaran' => $option['tahunPelajaran']);
+
+        # Registration status
+        if ($this->data['Registration']['status'] == 'Y') {
+            $addCond = array('Registration.passed_by_register' => 1);
+        } else if ($this->data['Registration']['status'] == 'N') {
+            $addCond = array('Registration.passed_by_register' => 0);
+        } else if ($this->data['Registration']['status'] == 'A') {
+            $addCond = array();
+        } else {
+            $addCond = array();
+        }
+
+        # Registration date
+        $dateCond = array();
+        if (!empty($this->data['Registration']['start_date'])) {
+            $dateCondStart = array('Registration.register_date >=' => $this->data['Registration']['start_date']);
+        }
+
+        if (isset($dateCondStart)) {
+            $dateCond = array_merge($dateCond, $dateCondStart);   
+        }
+
+        if (!empty($this->data['Registration']['end_date'])) {
+            $dateCondEnd = array('Registration.register_date <=' => $this->data['Registration']['end_date']);
+        }
+
+        if (isset($dateCondEnd)) {
+            $dateCond = array_merge($dateCond, $dateCondEnd);   
+        }
+
+        $conditionsReg = array_merge($conditionsReg, $addCond, $dateCond);
+
 		$data = $this->Registration->find('all', array('conditions' => $conditionsReg, 'fields' => array('Registration.id','Registration.nisn','Registration.nama','Registration.asal_sekolah','Registration.gender','Registration.tanggal_verifikasi','Registration.passed_by_register'),'recursive' => -1, 'order'=> array('Registration.id' => 'ASC')));
 		
         $this->set(compact('data','option'));

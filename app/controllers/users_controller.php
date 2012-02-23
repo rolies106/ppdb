@@ -14,8 +14,8 @@ class usersController extends AppController {
             $this->data['User']['password'] = $this->Auth->password($this->data['User']['pwd']);
             if($this->Auth->login($this->data)){
                 $this->redirect(array('admin'=>true,'controller'=>'users','action'=>'dashboard'));
-            }                        
-        }        
+            }
+        }
     }
     
     function logout(){
