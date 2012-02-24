@@ -1,0 +1,16 @@
+# Penerimaan Peserta Didik Baru
+
+PPDB System powered by [CakePHP Framework](http://cakephp.org/) v1.3.7.
+
+## Requirement
+
+    *Webserver (Apache >2.2)
+    *PHP Version 4 or 5 (recommended)
+
+## Documentation
+
+**[In Plan]**
+
+## Copyrights
+
+TukuToko 2011
