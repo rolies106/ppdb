@@ -43,7 +43,7 @@
             <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
         </div>
         
-        <nav class="grid_10 prefix_9 topmenu">
+        <nav class="grid_11 prefix_8 topmenu">
             <ul>
                 <li class="<?php echo $menu->highlight('/$'); ?>">
                     <?php echo $this->Html->link(__('Beranda',true),array('admin'=>false,'controller'=>'posts','action'=>'index')); ?>
@@ -51,12 +51,26 @@
                 <li class="<?php echo $menu->highlight('/pengumuman$'); ?>">
                     <?php echo $this->Html->link(__('Pengumuman',true),array('admin'=>false,'controller'=>'registrations','action'=>'listAll')); ?>
                 </li>
-                <li class="<?php echo $menu->highlight('/daftar$'); ?>">
-                    <?php echo $this->Html->link(__('Daftar',true),array('admin'=>false,'controller'=>'registrations','action'=>'add')); ?>
+                <?php if ($this->Session->check('Auth.User.id') == false) { ?>
+                    <li class="<?php echo $menu->highlight('/daftar$'); ?>">
+                        <?php echo $this->Html->link(__('Daftar',true),array('admin'=>false,'controller'=>'registrations','action'=>'add')); ?>
+                    </li>
+                <?php } ?>
+                <li class="<?php echo $menu->highlight('/profile-sekolah$'); ?>">
+                    <?php echo $this->Html->link(__('Sekolah',true),array('admin'=>false,'controller'=>'options','action'=>'profileSekolah')); ?>
                 </li>
-                <li class="<?php echo $menu->highlight('/profile$'); ?>">
-                    <?php echo $this->Html->link(__('Profile',true),array('admin'=>false,'controller'=>'options','action'=>'profileSekolah')); ?>
-                </li>
+                <?php if ($this->Session->check('Auth.User.id') == false) { ?>
+                    <li class="<?php echo $menu->highlight('/login$'); ?>">
+                        <?php echo $this->Html->link(__('Login',true),array('admin'=>false,'controller'=>'users','action'=>'login')); ?>
+                    </li>
+                <?php } else { ?>
+                    <li class="<?php echo $menu->highlight('/member/profile$'); ?>">
+                        <?php echo $this->Html->link(__('Profile',true),array('member'=>true,'controller'=>'registrations','action'=>'profile')); ?>
+                    </li>
+                    <li class="<?php echo $menu->highlight('/users/logout$'); ?>">
+                        <?php echo $this->Html->link(__('Logout',true),array('admin'=>false,'controller'=>'users','action'=>'logout')); ?>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
         <div class="clear"></div>
@@ -68,15 +82,15 @@
     </div>
     
     <footer>
-		<div class="footer-wrap">
-			<div class="footer-left">
-				Copyright &copy; <?php echo date('Y'); ?> <?php echo $options['nama_sekolah']; ?>
-			</div>
-			
-			<div class="footer-right">
-				<a href="http://tukutoko.com" title="TukuToko">Designed and Developed by TukuToko.com</a><a href="http://tukutoko.com" title="Professional Web Based Application and Web Site Developer"><?php echo $html->image("tukutoko_logo.gif",array('alt' => 'Professional Web Based Application and Web Site Developer')); ?></a>
-			</div>
-		</div>
+        <div class="footer-wrap">
+            <div class="footer-left">
+                Copyright &copy; <?php echo date('Y'); ?> <?php echo $options['nama_sekolah']; ?>
+            </div>
+            
+            <div class="footer-right">
+                <a href="http://tukutoko.com" title="TukuToko">Designed and Developed by TukuToko.com</a><a href="http://tukutoko.com" title="Professional Web Based Application and Web Site Developer"><?php echo $html->image("tukutoko_logo.gif",array('alt' => 'Professional Web Based Application and Web Site Developer')); ?></a>
+            </div>
+        </div>
     </footer>
     
   </div> <!--! end of #container -->
@@ -99,19 +113,19 @@
     <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
   <![endif]-->
 
-	<script type="text/javascript">
-	
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-5255441-2']);
-	  _gaq.push(['_trackPageview']);
-	
-	  (function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	
-	</script>
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-5255441-2']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
   
 </body>
 </html>
