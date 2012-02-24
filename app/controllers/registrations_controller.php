@@ -7,6 +7,11 @@
  
 class RegistrationsController extends AppController {
     var $name = 'Registrations';
+
+    function beforeFilter(){
+        parent::beforeFilter();
+        $this->Auth->allow('index');
+    }
 	
     function index(){
         $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
@@ -540,5 +545,9 @@ class RegistrationsController extends AppController {
         $this->set(compact('option','data'));
         
         $this->render('','pdf','print_kartu_peserta');
+    }
+
+    function member_profile() {
+       // die('This is member area');
     }
 }

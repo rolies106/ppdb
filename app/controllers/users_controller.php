@@ -13,7 +13,12 @@ class usersController extends AppController {
         if(!empty($this->data)) {
             $this->data['User']['password'] = $this->Auth->password($this->data['User']['pwd']);
             if($this->Auth->login($this->data)){
-                $this->redirect(array('admin'=>true,'controller'=>'users','action'=>'dashboard'));
+                if ($this->Auth->user('level') == 1) {
+                    $this->redirect(array('admin'=>true,'controller'=>'users','action'=>'dashboard'));    
+                } else if ($this->Auth->user('level') == 4) {
+                    $this->redirect(array('member'=>true,'controller'=>'registrations','action'=>'profile'));
+                }
+                
             }
         }
     }
