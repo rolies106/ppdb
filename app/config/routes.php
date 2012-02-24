@@ -36,4 +36,5 @@
     Router::connect('/daftar', array('controller' => 'registrations', 'action' => 'add'));
     Router::connect('/pengumuman', array('controller' => 'registrations', 'action' => 'listAll'));
     Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
-    Router::connect('/profile', array('controller' => 'options', 'action' => 'profileSekolah'));
+    Router::connect('/profile-sekolah', array('controller' => 'options', 'action' => 'profileSekolah'));
+    Router::connect('/member/profile', array('member' => true, 'controller' => 'registrations', 'action' => 'profile'));

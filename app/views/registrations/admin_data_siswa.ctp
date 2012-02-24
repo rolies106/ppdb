@@ -1,9 +1,28 @@
 <div class="grid_24">
     <h2>
         <?php __('Data Calon Siswa yang mendaftar:')?>
-        <?php echo $this->Html->link(__('Export to excel',true),array('admin'=>true,'controller'=>'registrations','action'=>'exportXls'),array('class' => 'button rounded_small add-new-h2 right css3pie')); ?>
+        <?php #echo $this->Html->link(__('Export to excel',true),array('admin'=>true,'controller'=>'registrations','action'=>'exportXls'),array('class' => 'button rounded_small add-new-h2 right css3pie')); ?>
     </h2>
     
+    <div id="exportForm" class="dropdown">
+        <a href="#"><?php __('Export To Excel')?></a>
+        <?php echo $this->Form->create(null, array('url' => array('controller' => 'registrations', 'action' => 'exportXls'))); ?>
+            <div class="input_radio">
+                <label class="label"><?php __('Status :')?></label>
+                <?php echo $this->Form->radio('status', 
+                                    array('Y'=>__('Lolos',true), 'N' => __('Tidak Lolos',true), 'A' => __('Semua',true)),
+                                    array('value'=>'Y', 'legend'=>false));
+                ?>
+            </div>
+            <?php
+                echo $this->Form->input('start_date', array('label'=>__('Tanggal mulai pendaftaran',true), 'class' => 'datepicker'));
+                echo $this->Form->input('end_date', array('label'=>__('Tanggal selesai pendaftaran',true), 'class' => 'datepicker'));
+            ?>
+
+            <input type="submit" class="btn_blue helvetica fsize18" value="<?php __('Export')?>" />
+        </form>
+    </div>
+
     <table id="dataSiswaTable" class="display">
         <thead>
             <tr>
