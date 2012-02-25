@@ -7,7 +7,7 @@
 
 class User extends AppModel {
     var $name = 'User';
-    var $hasMany = array('Post');
+    var $hasMany = array('Post', 'Registration');
     
     var $validate = array(
         'level' => array(

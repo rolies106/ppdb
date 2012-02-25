@@ -7,6 +7,7 @@
             <th><?php __('Username')?></th>
             <th><?php __('Email')?></th>
             <th><?php __('Register Date')?></th>
+            <th><?php __('Level')?></th>
             <th><?php __('Action')?></th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
             <td><?php echo $this->Html->link($user['User']['username'],array('admin'=>true,'controller'=>'users','action'=>'edit',$user['User']['id'])); ?></td>
             <td><?php echo $user['User']['email']; ?></td>
             <td><?php echo $user['User']['register_date']; ?></td>
+            <td><?php echo ($user['User']['level'] == 1) ? 'admin' : 'member'; ?></td>
             <td><?php echo $this->Html->link('delete',array('admin'=>true,'controller'=>'users','action'=>'delete',$user['User']['id']),array('class' => 'js-confirm-delete', 'title' => __('Delete '.$user['User']['username'].' ?',true))); ?></td>
         </tr>
         <?php $no++; ?>

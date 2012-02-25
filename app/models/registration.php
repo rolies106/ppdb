@@ -8,6 +8,7 @@
 class Registration extends AppModel {
     var $name = 'Registration';
     var $hasMany = array('RegistrationScore' => array('dependent'=>true));
+    var $belongsTo  = array('User');
     
     var $validate = array(
         'nisn' => array(

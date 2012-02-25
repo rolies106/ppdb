@@ -389,9 +389,9 @@ p.last		{margin-bottom:0px;}
 	background-repeat: no-repeat;
 	outline: none;
 }
-.dspp_step1, .dspp_step2, .dspp_step3
+.dspp_step1, .dspp_step2, .dspp_step3, .dspp_step4
 {
-	width: 237px;
+	width: 190px;
 }
 .p2Step1, .p2Step2, .p2Step3, .p2Step4
 {
@@ -869,7 +869,7 @@ table.listing th {
 }
 
 table.listing thead tr {
-  background:transparent url('../img/thead.gif') repeat-x bottom left;
+  background:#f7f7f7 url('../img/thead.gif') repeat-x top left;
 }
 
 table.listing .listing-options a:hover {

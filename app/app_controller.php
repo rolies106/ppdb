@@ -8,7 +8,7 @@ class AppController extends Controller {
     
     function beforeFilter(){
 
-        $this->Auth->allow('index','display','add','share','cetakDocPendaftaran','cetakDocPernyataan','cetakDocNilai', 'printKartuPeserta', 'checkAvailableNisn','login', 'listAll','profileSekolah','view','inactive');
+        $this->Auth->allow('index','display','add','share','cetakDocPendaftaran','cetakDocPernyataan','cetakDocNilai', 'printKartuPeserta', 'checkAvailableNisn','checkAvailableUser','login', 'listAll','profileSekolah','view','inactive');
         $this->Auth->userScope = array('User.status'=>1);
         $this->Auth->loginAction = array('admin' => false,'controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'dashboard');

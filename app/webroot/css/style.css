@@ -208,7 +208,7 @@ button {  width: auto; overflow: visible; }
 
 /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
 .clearfix:before, .clearfix:after {
-  content: "\0020"; display: block; height: 0; visibility: hidden;	
+  content: "\0020"; display: block; height: 0; visibility: hidden;  
 } 
 
 .clearfix:after { clear: both; }
@@ -281,3 +281,67 @@ button {  width: auto; overflow: visible; }
   h2, h3{ page-break-after: avoid; }
 }
 
+/** Forms **/
+fieldset {
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+    padding: 16px 20px;
+}
+fieldset legend {
+    background:#fff;
+    color: #e32;
+    font-size: 160%;
+    font-weight: bold;
+}
+fieldset fieldset {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 16px 10px;
+}
+fieldset fieldset legend {
+    font-size: 120%;
+    font-weight: normal;
+}
+fieldset fieldset div {
+    clear: left;
+    margin: 0 20px;
+}
+
+.detail-profile .row {
+    border-bottom: 1px solid #DCDCDC;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    min-height: 18px;
+}
+
+.detail-profile .row p {
+    margin-bottom: 0;
+    margin-left: 184px;
+    margin-top: -18px;
+}
+
+.detail-profile .row span {
+    display: inline-block;
+    width: 175px;
+}
+
+span.reg-tidak-lulus, span.reg-lulus {
+    display: inline !important;
+    padding: 2px 5px;
+    width: auto !important;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+span.reg-tidak-lulus {
+    background-color: #C4452D;
+    border-color: #B12F17;
+    color: #FFFFFF;
+}
+
+span.reg-lulus {
+    background-color: #8DC361;
+    border-color: #489E00;
+    color: #FFFFC0;
+}

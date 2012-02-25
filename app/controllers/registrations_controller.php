@@ -49,6 +49,11 @@ class RegistrationsController extends AppController {
         
         if(!empty($this->data)) {
             
+            # User extra data
+            $this->data['User']['level'] = 4;
+            $this->data['User']['status'] = 1;
+            $this->data['User']['register_date'] = date('Y-m-d H:i:s');
+
             $options = array(
                 'nilai_per_semester' => $this->Option->getValue('nilai_rata_vertical'),
                 'nilai_semua_semester' => $this->Option->getValue('nilai_rata_horizontal')
@@ -548,6 +553,34 @@ class RegistrationsController extends AppController {
     }
 
     function member_profile() {
-       // die('This is member area');
+
+        $this->loadModel('User');
+        $id = $this->Auth->user('id');
+        if (!empty($id)) {
+            $conditionDetail = array('Registration.user_id' => $id);
+            $studentDetail = $this->Registration->find('first', array('conditions' => $conditionDetail, 'recursive' => 1));     
+
+            $label = $this->Session->read('registered');
+            $mapel = array(1 => 'Pendidikan Agama','Pendidikan Kewarganegaraan', 'Bahasa Indonesia', 'Bahasa Inggris','Matematika','IPA','IPS','Seni dan Budaya','Pendidikan Jasmani dan Kesehatan','Teknologi Informasi dan Komunikasi');
+            $dataNilai = compact('studentDetail', 'mapel','label');
+        } else {
+            $studentDetail = NULL;
+        }
+        
+        $this->set(compact('studentDetail','dataNilai'));
+
+/*        if (empty($this->data)) {
+            $this->data = $this->User->read();
+        } else {
+            if(empty($this->data['User']['secretword']) && empty($this->data['User']['resecretword'])){
+                unset($this->data['User']['secretword']);
+                unset($this->data['User']['resecretword']);
+            }
+            if($this->User->save($this->data)){
+                $this->Session->setFlash('User has been updated.','flash_success');
+                $this->redirect(array('admin'=>true,'controller'=>'users','action'=>'index'));
+            }
+        }
+*/
     }
 }

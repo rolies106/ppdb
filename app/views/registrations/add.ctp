@@ -5,15 +5,17 @@
         <div class="block_content grid_22 prefix_1 suffix_1">
 		
 			<h2 class="page-title">Form Pendaftaran Siswa Baru</h2>
-		
-        <input type="hidden" id="passing_url" value="<?php echo Router::url(array('controller' => 'registrations','action' => 'checkAvailableNisn', 'member' => false)); ?>" />
-        <input type="hidden" id="status_nis" value="" />
+            <input type="hidden" id="passing_url" value="<?php echo Router::url(array('controller' => 'registrations','action' => 'checkAvailableNisn', 'member' => false)); ?>" />
+            <input type="hidden" id="checkuser_url" value="<?php echo Router::url(array('controller' => 'users','action' => 'checkAvailableUser', 'member' => false)); ?>" />
+            <input type="hidden" id="status_nis" value="" />
+            <input type="hidden" id="status_username" value="" />
             <?php echo $this->Form->create('Registration',array('class'=>'dspp_panel')); ?>
             
 
 				<a href='#content1' label='1'><?php __('Input Data Pribadi') ?></a>
 				<a href='#content2' label='2'><?php __('Input Nilai') ?></a>
-				<a href='#content3' label='3'><?php __('Konfirmasi')?></a>
+                <a href='#content3' label='3'><?php __('Login Detail')?></a>
+				<a href='#content4' label='4'><?php __('Konfirmasi')?></a>
 				<fieldset id='content1'>
                     <h2 class="title helvetica">
                         <?php __('Pastikan Nomor Induk Siswa Nasional (NISN) Anda benar dan isikan data dengan benar, Hanya data-data yang diisi dengan benar dan yang memenuhi persyaratan yang akan kami proses ke tahap berikutnya.')?>
@@ -45,7 +47,16 @@
                     
                 </fieldset><!-- /fieldset 2-->
                 
-				<fieldset id='content3'>
+                <fieldset id='content3'>
+                    <h2 class="title helvetica">
+                        <?php __('Informasi detail untuk login (digunakan saat melakukan pengecekan kelulusan)')?>
+                    </h2>
+                                        
+                    <?php echo $this->element('input_user'); ?>
+                    
+                </fieldset><!-- /fieldset 3-->
+
+				<fieldset id='content4'>
                     <h2 class="title helvetica">
                         <?php __('Pernyataan Persetujuan')?>
                     </h2>
@@ -59,7 +70,7 @@
                         <input type="submit" class="btn_blue helvetica fsize18" value="<?php __('Daftar')?>" />
                     </div>
                     <div class="clear"></div>
-                </fieldset><!-- /fieldset 3-->
+                </fieldset><!-- /fieldset 4-->
             </form> 
             
         </div><!-- /block_content -->

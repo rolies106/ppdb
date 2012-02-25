@@ -78,4 +78,23 @@ class usersController extends AppController {
     		$this->redirect(array('admin'=>true,'controller'=>'users','action'=>'index'));
     	}
     }
+
+    /* Checking Function */
+    function checkAvailableUser(){
+        $this->layout = 'ajax';
+        if($this->RequestHandler->isAjax()){
+            $id = $_POST['username'];
+            $count = $this->User->find('count',array('conditions'=>array('User.username'=>$id)));
+            if($count < 1){
+                echo 'available';
+            }
+            else{
+                echo 'exist';
+            }
+            die();
+        }else{
+            $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
+        }
+    }
+
 }
