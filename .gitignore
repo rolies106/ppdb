@@ -4,3 +4,4 @@
 !empty
 app/tmp/*
 app/webroot/img/cache/*
+app/webroot/img/uploads/*

@@ -189,9 +189,23 @@ class Registration extends AppModel {
         
         return $selisih = $jd2 - $jd1;
     }
+
+    function checkDateInRange($start_date, $end_date, $date_from_user)
+    {
+        // Convert to timestamp
+        $start_ts = strtotime($start_date);
+        $end_ts = strtotime($end_date);
+        $user_ts = strtotime($date_from_user);
+
+        // Check that user date is between start & end
+        return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+    }
     
     function isRegistrationOpened($date){
-        $selisih = $this->checkSelisihTanggal($date);
+        # Old ways
+        # @author Resa Rahman
+        /*$selisih = $this->checkSelisihTanggal($date);
+
         $date_begin = $date['date1'];
         $today = date('Y-m-d');
         $date_range = array();
@@ -202,14 +216,21 @@ class Registration extends AppModel {
             
             $date_begin++;    
         }
-        
+        die(var_dump($date_range));
         if(in_array($today,$date_range)){
             return true;
         }
         else {
             return false;
-        }
+        }*/
+
+        # New Ways
+        # @author RoliesTheBee
+        $today = date('Y-m-d');
+
+        $isOpen = $this->checkDateInRange($date['date1'], $date['date2'], $today);
         
+        return $isOpen;
         //debug($date_range);
     }
 }

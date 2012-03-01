@@ -20,7 +20,7 @@ class RegistrationsController extends AppController {
     function inactive(){
         $this->loadModel('Option');
         $this->set('title_for_layout',__('Pendaftaran Belum dibuka | PPDB Online '.$this->Option->getValue('nama_sekolah'),true));
-        
+
         if($this->Registration->isRegistrationOpened(array('date1' => $this->Option->getValue('tanggal_mulai_pendaftaran'), 'date2' => $this->Option->getValue('tanggal_selesai_pendaftaran')))){
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
@@ -42,7 +42,7 @@ class RegistrationsController extends AppController {
         $this->loadModel('Option');
         $this->set('title_for_layout',__('Pendaftaran Siswa Baru | PPDB Online '.$this->Option->getValue('nama_sekolah'),true));
         $this->Session->delete('registered');
-        
+
         if(!$this->Registration->isRegistrationOpened(array('date1' => $this->Option->getValue('tanggal_mulai_pendaftaran'), 'date2' => $this->Option->getValue('tanggal_selesai_pendaftaran')))){
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'inactive'));
         }

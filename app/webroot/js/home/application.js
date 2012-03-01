@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    $("#home_slider").carouFredSel({
+    /*$("#home_slider").carouFredSel({
         auto : {
 			play 			: true,
 			pauseDuration 	: 5000,
@@ -22,4 +22,6 @@ jQuery(document).ready(function($){
 	        key     : "right"
 	    }
     });
+    */
+    $('#myslider').nivoSlider();
 });

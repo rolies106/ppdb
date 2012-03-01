@@ -21,7 +21,7 @@
   <link rel="image_src" href="<?php echo Router::url('/',true) ?>img/fb_share_logo.png" />
 
   <?php 
-    echo $this->Html->css(array('style','960_24_col','global'));
+    echo $this->Html->css(array('style','960_24_col','global', 'nivo-pascal/pascal.css', 'nivo-default/nivo-slider.css'));
   ?>
 
   <style type="text/css">
@@ -36,14 +36,20 @@
 
 <body>
 
-  <div id="container" class="container_24">
     <header id="header">
-        
-        <div class="grid_4 prefix_1">
-            <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
+    
+        <div id="header-wrapper" class="container_24">
+            <div class="grid_4 prefix_1">
+                <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
+            </div>
+            
         </div>
-        
-        <nav class="grid_11 prefix_8 topmenu">
+        <div class="clear"></div>
+
+    </header>
+
+    <nav class="topmenu">
+        <div class="container_24">
             <ul>
                 <li class="<?php echo $menu->highlight('/$'); ?>">
                     <?php echo $this->Html->link(__('Beranda',true),array('admin'=>false,'controller'=>'posts','action'=>'index')); ?>
@@ -72,17 +78,21 @@
                     </li>
                 <?php } ?>
             </ul>
-        </nav>
+        </div>
         <div class="clear"></div>
-    </header>
+    </nav>
+
+  <div id="container" class="container_24">
     
-    <div id="main" class="mainContent mb40- border-radius css3pie">
+    <div id="main" class="mainContent mb40- css3pie">
         <?php echo $content_for_layout; ?>
         <div class="clear"></div>
     </div>
-    
+        
+  </div> <!--! end of #container -->
+
     <footer>
-        <div class="footer-wrap">
+        <div class="footer-wrap container_24">
             <div class="footer-left">
                 Copyright &copy; <?php echo date('Y'); ?> <?php echo $options['nama_sekolah']; ?>
             </div>
@@ -91,9 +101,8 @@
                 <a href="http://tukutoko.com" title="TukuToko">Designed and Developed by TukuToko.com</a><a href="http://tukutoko.com" title="Professional Web Based Application and Web Site Developer"><?php echo $html->image("tukutoko_logo.gif",array('alt' => 'Professional Web Based Application and Web Site Developer')); ?></a>
             </div>
         </div>
+        <div class="clear"></div>
     </footer>
-    
-  </div> <!--! end of #container -->
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="<?php echo Router::url('/') ?>js/libs/jquery-1.5.min.js"%3E%3C/script%3E'))</script>

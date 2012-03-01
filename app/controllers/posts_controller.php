@@ -11,9 +11,10 @@ class PostsController extends AppController {
     function index(){
         $this->loadModel('Option');
         $this->set('title_for_layout',__('Home | PPDB Online '.$this->Option->getValue('nama_sekolah'),true));
-        $posts = $this->Post->find('all',array('conditions'=>array('Post.post_type'=>'post','Post.publish'=>'Y'),'order'=>array('Post.post_date DESC')));
+        $posts = $this->Post->find('all',array('conditions'=>array('Post.post_type'=>'post','Post.publish'=>'Y'),'order'=>array('Post.post_date DESC'), 'limit' => 8, 'offset' => 1));
+        $latestpost = $this->Post->find('first',array('conditions'=>array('Post.post_type'=>'post','Post.publish'=>'Y'),'order'=>array('Post.post_date DESC'), 'limit' => 1));
         $features = $this->Post->find('all',array('conditions'=>array('Post.post_type'=>'feature','Post.publish'=>'Y'),'order'=>array('Post.post_date DESC')));
-        $this->set(compact('posts','features'));
+        $this->set(compact('posts','features', 'latestpost'));
     }
     
     function view($id = null) {

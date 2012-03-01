@@ -20,7 +20,7 @@
 
 body
 {
-    background:#B7DCFA url("../img/body_bg.png") 0 0 repeat-x;
+    background:#E8E8E8 ;
     font-size:.8125em;
 }
 
@@ -46,7 +46,7 @@ p
 a:link, a:visited
 {
 	text-decoration:none;
-    color:#525151;
+/*    color:#525151; */
 }
 .share_link:link, .share_link:visited{
     display:block;
@@ -58,7 +58,7 @@ a:link, a:visited
 h1,h2,h3,h4,h5,h6 {font-weight: normal; margin:0 0 .5em 0; }
 
 h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
-h2 { font-size: 2em; margin-bottom: 0.75em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; line-height: 30px; }
 h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
 h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
 h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
@@ -99,6 +99,7 @@ p.last		{margin-bottom:0px;}
 .alignleft {
    float: left;
    margin-right:40px;
+   margin-bottom: 15px;
 }
 .alignright {
    float: right;
@@ -124,12 +125,7 @@ p.last		{margin-bottom:0px;}
     box-shadow: 0 1px 10px rgba(0,0,0,.1); 
 }
 .top-border-radius{
-    -webkit-border-top-left-radius: 8px;
-    -webkit-border-top-right-radius: 8px;
-    -moz-border-radius-topleft: 8px;
-    -moz-border-radius-topright: 8px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+
 }
 
 .relative{position:relative;}
@@ -178,6 +174,7 @@ p.last		{margin-bottom:0px;}
 .mrs{margin-right:5px}
 .mrm{margin-right:10px}
 .mrl{margin-right:20px}
+.mrxl{margin-right:40px}
 .mbn{margin-bottom:0}
 .mbs{margin-bottom:5px}
 .mbm{margin-bottom:10px}
@@ -188,6 +185,7 @@ p.last		{margin-bottom:0px;}
 .mls{margin-left:5px}
 .mlm{margin-left:10px}
 .mll{margin-left:20px}
+.mlxl{margin-left:40px}
 .mhn{margin-left:0;margin-right:0}
 .mhs{margin-left:5px;margin-right:5px}
 .mhm{margin-left:10px;margin-right:10px}
@@ -219,6 +217,9 @@ p.last		{margin-bottom:0px;}
 
 /* Header
 ----------------------------------------*/
+header#header, footer {
+    background:#005A8B url("../img/bg_header.png") 0 0 repeat-x;
+}
 .logo{
     /*background:url("../img/logo.png") 0 0 no-repeat;
     width:123px;
@@ -226,24 +227,29 @@ p.last		{margin-bottom:0px;}
     white-space: nowrap;
     text-indent:-99999px;*/
 }
-.topmenu{margin-top:73px;}
+.topmenu{
+    background:#C9631C url("../img/bg_navbar.png") 0 0 repeat-x;
+    height: 43px;
+}
 .topmenu ul{
     list-style-type:none;
+    float: right;
+    margin-top: 3px;
 }
 .topmenu li{float:left;}
 .topmenu a{
+    color:#ffffff;
     font-size:14px;
-    color:#555555;
     display:block;
     padding:8px 12px;
     margin-right:5px;
+    text-transform: uppercase;
 }
 .topmenu a:hover, .current_page_item a{
-    background:#B6DCFA;
-    color:#161616;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+    color: #793A11;
 }
 		
 /* Main Content
@@ -252,10 +258,12 @@ p.last		{margin-bottom:0px;}
 {
     background:#fff;
     border:1px solid #DDDDDD;
+    border-top: 0 none;
+    border-bottom: 0 none;
 }
 .top_container{
     background:#EFF2F3 url("../img/top_bg.png") 0 0 repeat-x;
-    padding:50px 0 22px 0;
+    padding:10px 0 22px 0;
 }
 .btn_blue{
     background:url("../img/btn_blue.png") 0 0 no-repeat;
@@ -276,6 +284,20 @@ p.last		{margin-bottom:0px;}
 ----------------------------------------*/
 #footer
 {
+}
+
+/* Homepage style
+----------------------------------------*/
+.block_content .post_wrapper {
+    padding: 18px;
+    border: 1px solid #cccccc;
+}
+
+.post_wrapper legend {
+    background: #ffffff;
+    margin-top: -33px;
+    float: left;
+    color: #F96300;
 }
 
 /* Registration style
@@ -1404,10 +1426,22 @@ a.link_more:hover {
 .caroufredsel_wrapper{margin:0 auto;}
 /*.menu-slider .clear{clear:none !important;display:none !important;}*/
 
+/* LOGIN */
+#UserLoginForm input[type="submit"] {
+    background: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    margin-top: 20px;
+    padding: 5px 10px;
+}
+
+#UserLoginForm input[type="submit"]:hover {
+    background: #ECECEC;
+}
+
 /* FOOTER */
 .footer-wrap {
     height: 20px;
-	color: #888888;
+	color: #ffffff;
 }
 
 .footer-left {
@@ -1428,7 +1462,7 @@ a.link_more:hover {
     line-height: 32px;
     vertical-align: middle;
 	margin-left: 10px;
-	color: #888888;
+	color: #ffffff;
 }
 
 .footer-right a:hover {

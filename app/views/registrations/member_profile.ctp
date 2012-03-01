@@ -60,25 +60,8 @@
                 <p><?php echo ($studentDetail['Registration']['prestasi']) ? nl2br($studentDetail['Registration']['prestasi']) : '-'; ?></p>
             </div>
         </fieldset>
-        
-        <fieldset><legend><?php __('Hasil Seleksi'); ?></legend>
-            <div class="row">
-                <span><?php __('Tahun Pelajaran'); ?></span> : <?php echo $studentDetail['Registration']['tahun_pelajaran']; ?>
-            </div>
-            <div class="row">
-                <span><?php __('Tanggal Registrasi'); ?></span> : <?php echo $dateFormat->changeDateFormat($studentDetail['Registration']['register_date']); ?>
-            </div>
-            <div class="row">
-                <span><?php __('Hasil Tahap Registrasi'); ?></span> : <span class="<?php echo ($studentDetail['Registration']['passed_by_register']) ? 'reg-lulus' : 'reg-tidak-lulus'; ?>"><?php echo ($studentDetail['Registration']['passed_by_register']) ? 'Lulus' : 'Tidak Lulus'; ?></span>
-            </div>
-            
-            <?php if ($studentDetail['Registration']['passed_by_register']) { ?>
-                <div class="row">
-                    <span><?php __('Tanggal Verifikasi'); ?></span> : <?php echo $dateFormat->changeDateFormat($studentDetail['Registration']['tanggal_verifikasi']); ?>
-                </div>
-            <?php } ?>      
-        </fieldset>
-        
+                
+        <?php if (!empty($dataNilai['studentDetail']['RegistrationScore'])) : ?>
         <fieldset><legend><?php __('Nilai Raport'); ?></legend>
             <table class="listing">
                 <thead>
@@ -168,7 +151,26 @@
                 </tfoot>
             </table>
         </fieldset>
-        
+        <?php endif; ?>
+
+        <fieldset><legend><?php __('Hasil Seleksi Tahap Awal'); ?></legend>
+            <div class="row">
+                <span><?php __('Tahun Pelajaran'); ?></span> : <?php echo $studentDetail['Registration']['tahun_pelajaran']; ?>
+            </div>
+            <div class="row">
+                <span><?php __('Tanggal Registrasi'); ?></span> : <?php echo $dateFormat->changeDateFormat($studentDetail['Registration']['register_date']); ?>
+            </div>
+            <div class="row">
+                <span><?php __('Hasil Tahap Registrasi'); ?></span> : <span class="<?php echo ($studentDetail['Registration']['passed_by_register']) ? 'reg-lulus' : 'reg-tidak-lulus'; ?>"><?php echo ($studentDetail['Registration']['passed_by_register']) ? 'Lulus' : 'Tidak Lulus'; ?></span>
+            </div>
+            
+            <?php if ($studentDetail['Registration']['passed_by_register']) { ?>
+                <div class="row">
+                    <span><?php __('Tanggal Verifikasi'); ?></span> : <?php echo $dateFormat->changeDateFormat($studentDetail['Registration']['tanggal_verifikasi']); ?>
+                </div>
+            <?php } ?>      
+        </fieldset>
+
     </div>
 </div>
 </div>

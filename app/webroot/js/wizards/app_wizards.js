@@ -98,6 +98,9 @@ jQuery(document).ready(function($){
                     $('#RegistrationNisn').addClass('required-field');
                     return false;
                 }
+
+                $('#UserUsername').val(nis);
+
                 $.ajax({
                     type    : "POST",
                     url     : passuri,

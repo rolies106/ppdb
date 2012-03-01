@@ -9,7 +9,7 @@ class usersController extends AppController {
     var $name = 'users';
     
     function login(){
-        $this->layout = 'login';
+        //$this->layout = 'login';
         if(!empty($this->data)) {
             $this->data['User']['password'] = $this->Auth->password($this->data['User']['pwd']);
             if($this->Auth->login($this->data)){

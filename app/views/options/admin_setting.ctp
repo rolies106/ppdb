@@ -12,8 +12,8 @@
     echo $this->Form->input('Option.nilai_rata_vertical',array('label'=>__('Nilai rata-rata per semester',true),'value'=>$data['nilai_rata_vertical']));
     echo $this->Form->input('Option.tahun_pelajaran',array('label'=>__('Tahun Pelajaran',true),'value'=>$data['tahun_pelajaran']));
     echo $this->Form->input('Option.panitia',array('label'=>__('Panitia PPDB Online',true),'value'=>$data['panitia']));
-    echo $this->Form->input('Option.tanggal_seleksi_akademik',array('label'=>__('Tanggal Seleksi Akademik',true),'value'=>$data['tanggal_seleksi_akademik']));
-    echo $this->Form->input('Option.tanggal_psikotes',array('label'=>__('Tanggal Psikotes',true),'value'=>$data['tanggal_psikotes']));
+    echo $this->Form->input('Option.tanggal_seleksi_akademik',array('label'=>__('Tanggal Seleksi Akademik',true),'value'=>$data['tanggal_seleksi_akademik'], 'class' => 'datepicker'));
+    echo $this->Form->input('Option.tanggal_psikotes',array('label'=>__('Tanggal Psikotes',true),'value'=>$data['tanggal_psikotes'], 'class' => 'datepicker'));
     echo $this->Form->input('Option.tanggal_hasil_seleksi',array('label'=>__('Tanggal Hasil Seleksi',true),'value'=>$data['tanggal_hasil_seleksi'], 'class' => 'datepicker'));
     echo $this->Form->input('Option.text_pembuka_pengumuman',array('value'=>$data['text_pembuka_pengumuman'], 'type'=>'textarea', 'label'=>'Text Pembuka Pada Halaman Pengumuman', 'class'=>'ckeditor'));
     echo $this->Form->end('Save Settings');
