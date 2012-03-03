@@ -42,7 +42,10 @@
             <div class="grid_4 prefix_1">
                 <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
             </div>
-            
+            <div class="grid_18">
+                <h1 class="logo-text"><?php echo $options['nama_sekolah']; ?></h1>
+                <h2 class="slogan-text">Rintisan Sekolah Berskala Internasional</h2>
+            </div>
         </div>
         <div class="clear"></div>
 
@@ -90,8 +93,48 @@
     </div>
         
   </div> <!--! end of #container -->
-
     <footer>
+        <div class="footer-wrap container_24">
+            <div class="grid_7 box">
+                <ul>
+                    <li><?php echo $options['nama_sekolah']; ?></li>
+                    <li><?php echo $options['alamat']; ?></li>
+                    <li>Tel/Fax <?php echo $options['no_telp']; ?> / <?php echo $options['no_faks']; ?></li>
+                    <li><?php echo $options['kecamatan']; ?> <?php echo $options['kodepos']; ?></li>
+                    <li><?php echo $options['kota']; ?> <?php echo $options['propinsi']; ?></li>
+                </ul>
+            </div>
+            
+            <div class="grid_5 box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Cara mendaftar PPDB</a></li>
+                    <li><a href="#">Persyaratan PPDB</a></li>
+                    <li><a href="#">Berita Sekolah</a></li>
+                    <li><a href="#">Event Calendar</a></li>
+                    <li><a href="#">Media</a></li>
+                </ul>
+            </div>
+
+            <div class="grid_5 box">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Our Missions</a></li>
+                    <li><a href="#">Struktur Organisasi</a></li>
+                    <li><a href="#">Sambutan Kepala Sekolah</a></li>
+                </ul>
+            </div>
+            <div class="grid_6 box">
+                <h3>Ikuti Kami Di</h3>
+                <ul class="follow">
+                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/facebook.png" /></li>
+                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/twitter.png" /></li>
+                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/rss.png" /></li>
+                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/mail.png" /></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
         <div class="footer-wrap container_24">
             <div class="footer-left">
                 Copyright &copy; <?php echo date('Y'); ?> <?php echo $options['nama_sekolah']; ?>

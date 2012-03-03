@@ -66,7 +66,18 @@ class AppController extends Controller {
             $this->loadModel('Option');
 
             $options = array(
+                'nama_aplikasi' => $this->Option->getValue('nama_aplikasi'),
                 'nama_sekolah' => $this->Option->getValue('nama_sekolah'),
+                'alamat' => $this->Option->getValue('alamat'),
+                'kecamatan' => $this->Option->getValue('kecamatan'),
+                'kota' => $this->Option->getValue('kota'),
+                'propinsi' => $this->Option->getValue('propinsi'),
+                'kodepos' => $this->Option->getValue('kodepos'),
+                'no_telp' => $this->Option->getValue('no_telp'),
+                'no_faks' => $this->Option->getValue('no_faks'),
+                'email' => $this->Option->getValue('email'),
+                'website' => $this->Option->getValue('website'),
+                'tahun_pelajaran' => $this->Option->getValue('tahun_pelajaran'),                                                                                
             );
             
             $this->set(compact('options'));

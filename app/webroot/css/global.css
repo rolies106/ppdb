@@ -227,6 +227,15 @@ header#header, footer {
     white-space: nowrap;
     text-indent:-99999px;*/
 }
+.logo-text {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.slogan-text {
+    color: #ffffff;
+    margin-top: -15px;
+}
 .topmenu{
     background:#C9631C url("../img/bg_navbar.png") 0 0 repeat-x;
     height: 43px;
@@ -284,6 +293,32 @@ header#header, footer {
 ----------------------------------------*/
 #footer
 {
+}
+
+.footer-wrap .box {
+    margin-left: 10px;    
+    margin-top: 20px;
+}
+
+.footer-wrap ul {
+    margin-left: 0;
+}
+
+.footer-wrap ul li {
+    color: #FFFFFF;
+    list-style: none outside none;
+}
+.footer-wrap ul.follow li {
+    float: left;
+    margin-right: 10px;
+}
+.footer-wrap a {
+    color: #FFD799;
+}
+
+.footer-wrap a:hover,
+.footer-wrap h3 {
+    color: #FF7700;
 }
 
 /* Homepage style
