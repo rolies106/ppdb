@@ -103,7 +103,7 @@
 			</div>
 			
 			<div class="footer-right">
-				<a href="http://tukutoko.com" title="TukuToko">Designed and Developed by TukuToko.com</a><a href="http://tukutoko.com" title="Professional Web Based Application and Web Site Developer"><?php echo $html->image("tukutoko_logo.gif",array('alt' => 'Professional Web Based Application and Web Site Developer')); ?></a>
+				<a href="http://kongcreate.com" title="KongCreate">Designed and Developed by KongCreate.com</a><a href="http://kongcreate.com" title="Professional Web Based Application and Web Site Developer"><?php echo $html->image("kong-create.png",array('alt' => 'Professional Web Based Application and Web Site Developer')); ?></a>
 			</div>
 		</div>
     </footer>
