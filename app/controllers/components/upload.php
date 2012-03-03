@@ -73,7 +73,7 @@
 				$this->_name = $fileName;
 				
 				// -- error if not correct extension
-				if(!in_array($this->ext($fileName),$this->_allowed)){
+				if(!in_array(strtolower($this->ext($fileName)),$this->_allowed)){
 					$this->error("File type not allowed.");
 				} else { 
 				
