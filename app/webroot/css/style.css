@@ -325,13 +325,18 @@ fieldset fieldset div {
     width: 175px;
 }
 
-span.reg-tidak-lulus, span.reg-lulus {
+span.reg-tidak-lulus, span.reg-lulus, span.notice {
     display: inline !important;
     padding: 2px 5px;
     width: auto !important;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
+}
+
+span.notice {
+    background-color: #cccccc;
+    color: #999999;
 }
 
 span.reg-tidak-lulus {

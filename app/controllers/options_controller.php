@@ -52,6 +52,8 @@ class OptionsController extends AppController {
             $data['status'] = $this->Option->getValue('status');
             $data['website'] = $this->Option->getValue('website');
             $data['text_pembuka_profile'] = $this->Option->getValue('text_pembuka_profile');
+            $data['kepsek'] = $this->Option->getValue('kepsek');
+            $data['kepsek_nip'] = $this->Option->getValue('kepsek_nip');            
         }
         $this->set(compact('data'));
     }
@@ -72,6 +74,7 @@ class OptionsController extends AppController {
             $data['kelompok_jumlah_siswa'] = $this->Option->getValue('kelompok_jumlah_siswa');
             $data['nilai_rata_horizontal'] = $this->Option->getValue('nilai_rata_horizontal');
             $data['nilai_rata_vertical'] = $this->Option->getValue('nilai_rata_vertical');
+            $data['nilai_minimal_test'] = $this->Option->getValue('nilai_minimal_test');
             $data['tahun_pelajaran'] = $this->Option->getValue('tahun_pelajaran');
             $data['text_pembuka_pengumuman'] = $this->Option->getValue('text_pembuka_pengumuman');
             $data['panitia'] = $this->Option->getValue('panitia');

@@ -171,6 +171,34 @@
             <?php } ?>      
         </fieldset>
 
+        <fieldset><legend><?php __('Hasil Seleksi Test'); ?></legend>
+            <?php if (!empty($studentDetail['TestScore']['id'])): ?>
+                <div class="row">
+                    <span><?php __('Nilai Akademik'); ?></span> : <?php echo $studentDetail['TestScore']['academic']; ?>
+                </div>
+                <div class="row">
+                    <span><?php __('Nilai Bhs. Inggris'); ?></span> : <?php echo $studentDetail['TestScore']['english']; ?>
+                </div>
+                <div class="row">
+                    <span><?php __('Nilai Komputer'); ?></span> : <?php echo $studentDetail['TestScore']['computer']; ?>
+                </div>
+                <div class="row">
+                    <span><?php __('Nilai Wawancara'); ?></span> : <?php echo $studentDetail['TestScore']['interview']; ?>
+                </div>
+                <div class="row">
+                    <span><?php __('Nilai UASBN'); ?></span> : <?php echo $studentDetail['TestScore']['uasbn']; ?>
+                </div>
+                
+                <div class="row">
+                    <span><?php __('Dokumen'); ?></span> : <span class="notice"><?php echo $this->Html->link(__('Pengumuman Hasil',true),array('member' => true,'controller'=>'registrations','action'=>'cetakDocHasilTest',$studentDetail['Registration']['nisn']),array('class'=>'', 'target' => '_blank')); ?></span>
+                </div>
+            <?php else: ?>
+                <div class="row">
+                    Hasil seleksi saat ini belum selesai di input.
+                </div>
+            <?php endif; ?>
+        </fieldset>
+
     </div>
 </div>
 </div>

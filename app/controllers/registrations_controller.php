@@ -196,6 +196,47 @@ class RegistrationsController extends AppController {
         $this->set(compact('dataSiswa', 'option'));
     }
     
+    function member_cetakDocHasilTest($nisn = NULL){
+        $this->layout = 'pdf'; //this will use the pdf.ctp layout
+
+        $this->loadModel('Option');
+            $option = array(
+                'nama_aplikasi' => $this->Option->getValue('nama_aplikasi'),
+                'nama_sekolah' => $this->Option->getValue('nama_sekolah'),
+                'alamat' => $this->Option->getValue('alamat'),
+                'kecamatan' => $this->Option->getValue('kecamatan'),
+                'kota' => $this->Option->getValue('kota'),
+                'propinsi' => $this->Option->getValue('propinsi'),
+                'kodepos' => $this->Option->getValue('kodepos'),
+                'no_telp' => $this->Option->getValue('no_telp'),
+                'no_faks' => $this->Option->getValue('no_faks'),
+                'email' => $this->Option->getValue('email'),
+                'website' => $this->Option->getValue('website'),
+                'tahunPelajaran' => $this->Option->getValue('tahun_pelajaran'),
+                'nilai_minimal_test' => $this->Option->getValue('nilai_minimal_test'),
+                'kepsek' => $this->Option->getValue('kepsek'),
+                'kepsek_nip' => $this->Option->getValue('kepsek_nip'),
+                'tanggal_mulai_verifikasi' => $this->Option->getValue('tanggal_mulai_verifikasi'),
+                'tanggal_selesai_verifikasi' => $this->Option->getValue('tanggal_selesai_verifikasi'),
+
+            );
+
+        $next_year = $option['tahunPelajaran'] + 1;
+
+        define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
+        define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
+
+        if ($this->Session->check('Auth.User.id') == false)
+        {
+            $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
+        }
+        
+        $dataSiswa = $this->Registration->find('first',array('recursive' => 1, 'conditions'=>array('Registration.nisn'=>$nisn)));
+        $totalNilai = $dataSiswa['TestScore']['academic'] + $dataSiswa['TestScore']['english'] + $dataSiswa['TestScore']['computer'] + $dataSiswa['TestScore']['interview'] + $dataSiswa['TestScore']['uasbn'];
+
+        $this->set(compact('dataSiswa', 'option', 'next_year', 'totalNilai'));
+    }
+        
     function cetakDocNilai(){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         

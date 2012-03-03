@@ -10,6 +10,7 @@
     echo $this->Form->input('Option.kelompok_jumlah_siswa', array('label'=>__('Pengelompokan jumlah siswa',true),'value' => $data['kelompok_jumlah_siswa']));
     echo $this->Form->input('Option.nilai_rata_horizontal', array('label'=>__('Nilai rata-rata semua semester',true),'value' => $data['nilai_rata_horizontal']));
     echo $this->Form->input('Option.nilai_rata_vertical',array('label'=>__('Nilai rata-rata per semester',true),'value'=>$data['nilai_rata_vertical']));
+    echo $this->Form->input('Option.nilai_minimal_test',array('label'=>__('Nilai test terendah',true),'value'=>$data['nilai_minimal_test']));
     echo $this->Form->input('Option.tahun_pelajaran',array('label'=>__('Tahun Pelajaran',true),'value'=>$data['tahun_pelajaran']));
     echo $this->Form->input('Option.panitia',array('label'=>__('Panitia PPDB Online',true),'value'=>$data['panitia']));
     echo $this->Form->input('Option.tanggal_seleksi_akademik',array('label'=>__('Tanggal Seleksi Akademik',true),'value'=>$data['tanggal_seleksi_akademik'], 'class' => 'datepicker'));

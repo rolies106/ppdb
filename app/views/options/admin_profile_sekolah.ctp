@@ -3,6 +3,8 @@
     <?php
     echo $this->Form->create('Option');
     echo $this->Form->input('Option.nama_sekolah', array('value' => $data['nama_sekolah']));
+    echo $this->Form->input('Option.kepsek',array('value'=>$data['kepsek'], 'label' => 'Kepala Sekolah'));
+    echo $this->Form->input('Option.kepsek_nip',array('value'=>$data['kepsek_nip'], 'label' => 'NIP Kepala Sekolah'));
     echo $this->Form->input('Option.alamat',array('type'=>'textarea','value'=>$data['alamat']));
     echo $this->Form->input('Option.kecamatan',array('value'=>$data['kecamatan']));	
 	echo $this->Form->input('Option.kota',array('value'=>$data['kota'],'label' => 'Kotamadya / Kabupaten'));

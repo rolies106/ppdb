@@ -43,6 +43,10 @@
 		       <td class="dark"><?php echo $data['no_faks']?></td>
 		   </tr>
 		   <tr>
+		       <td><?php __('Nama Kepala Sekolah')?></td>
+		       <td class="dark"><?php echo $data['kepsek']?></td>
+		   </tr>
+		   <tr>
 		       <td><?php __('Email')?></td>
 		       <td class="dark"><a href="mailto:<?php echo $data['email']?>"><?php echo $data['email']?></a></td>
 		   </tr>

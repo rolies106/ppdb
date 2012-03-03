@@ -26,6 +26,16 @@ class TestScore extends AppModel {
             'rule' => 'numeric'
         )
     );
+
+    function persentaseNilai() {
+        $array = array('academic' => 0.4,
+                       'english' => 0.1,
+                       'computer' => 0.1,
+                       'interview' => 0.05,
+                       'uasbn' => 0.35);
+        
+        return $array;
+    }
 }
 
 ?>
