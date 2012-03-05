@@ -9,7 +9,7 @@
             <div class="slider-wrapper theme-pascal">
                 <div id="myslider" class="nivoSlider">
                     <?php foreach($features as $feature): ?>
-                        <a href="<?php echo Router::url('/'); ?>img/uploads/<?php echo $feature['Post']['post_image']; ?>" class="colorbox">
+                        <a href="<?php echo Router::url('/'); ?>posts/view/<?php echo $feature['Post']['id']; ?>" class="">
                             <?php 
                             if(!empty($feature['Post']['post_image'])){ # h=284
                                 echo $html->image("timthumb.php?src=uploads/".$feature['Post']['post_image']."&h=235&w=934&zc=1",array('alt' => $feature['Post']['post_title'], 'title' => $feature['Post']['post_title']));
@@ -44,7 +44,7 @@
                             }
                             ?>
                         </a>
-                        <?php echo substr($latestpost['Post']['post_content'], 0, 500) . '...'; ?>
+                        <?php echo substr(strip_tags($latestpost['Post']['post_content']), 0, 500) . '...'; ?>
                         
                         <footer>
                             <?php echo $this->Html->link(__('read more...',true),array('admin'=>false,'controller'=>'posts','action'=>'view',$latestpost['Post']['id']),array('class'=>'link_more fsize14 css3pie relative')); ?>

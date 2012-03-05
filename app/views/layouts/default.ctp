@@ -44,7 +44,7 @@
             </div>
             <div class="grid_18">
                 <h1 class="logo-text"><?php echo $options['nama_sekolah']; ?></h1>
-                <h2 class="slogan-text">Rintisan Sekolah Berskala Internasional</h2>
+                <h2 class="slogan-text">Rintisan Sekolah Bertaraf Internasional</h2>
             </div>
         </div>
         <div class="clear"></div>

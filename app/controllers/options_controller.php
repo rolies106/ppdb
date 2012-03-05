@@ -74,6 +74,7 @@ class OptionsController extends AppController {
             $data['kelompok_jumlah_siswa'] = $this->Option->getValue('kelompok_jumlah_siswa');
             $data['nilai_rata_horizontal'] = $this->Option->getValue('nilai_rata_horizontal');
             $data['nilai_rata_vertical'] = $this->Option->getValue('nilai_rata_vertical');
+            $data['nilai_minimal_mapel'] = $this->Option->getValue('nilai_minimal_mapel');
             $data['nilai_minimal_test'] = $this->Option->getValue('nilai_minimal_test');
             $data['tahun_pelajaran'] = $this->Option->getValue('tahun_pelajaran');
             $data['text_pembuka_pengumuman'] = $this->Option->getValue('text_pembuka_pengumuman');

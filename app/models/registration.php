@@ -82,6 +82,7 @@ class Registration extends AppModel {
             // define nilai awal
             $nilai_per_semester = $options['nilai_per_semester'];
             $nilai_semua_semester = $options['nilai_semua_semester'];
+            $nilai_minimal_mapel = $options['nilai_minimal_mapel'];
             $jml_pelajaran = count($data['RegistrationScore']);
             $nilai_semester1 = '';
             $nilai_semester2 = '';
@@ -106,20 +107,48 @@ class Registration extends AppModel {
             $rata_semester5 = $nilai_semester5 / $jml_pelajaran;
             
             // validate 4 nilai mata pelajaran penting
-            $nilai_indo = ($data['RegistrationScore'][2]['semester_1'] + $data['RegistrationScore'][2]['semester_2'] + $data['RegistrationScore'][2]['semester_3'] + $data['RegistrationScore'][2]['semester_4'] + $data['RegistrationScore'][2]['semester_5']) / 5;
-            $nilai_inggris = ($data['RegistrationScore'][3]['semester_1'] + $data['RegistrationScore'][3]['semester_2'] + $data['RegistrationScore'][3]['semester_3'] + $data['RegistrationScore'][3]['semester_4'] + $data['RegistrationScore'][3]['semester_5']) / 5;
-            $nilai_matematika = ($data['RegistrationScore'][4]['semester_1'] + $data['RegistrationScore'][4]['semester_2'] + $data['RegistrationScore'][4]['semester_3'] + $data['RegistrationScore'][4]['semester_4'] + $data['RegistrationScore'][4]['semester_5']) / 5;
-            $nilai_ipa = ($data['RegistrationScore'][5]['semester_1'] + $data['RegistrationScore'][5]['semester_2'] + $data['RegistrationScore'][5]['semester_3'] + $data['RegistrationScore'][5]['semester_4'] + $data['RegistrationScore'][5]['semester_5']) / 5;
+            #$nilai_indo = ($data['RegistrationScore'][2]['semester_1'] + $data['RegistrationScore'][2]['semester_2'] + $data['RegistrationScore'][2]['semester_3'] + $data['RegistrationScore'][2]['semester_4'] + $data['RegistrationScore'][2]['semester_5']) / 5;
+            #$nilai_inggris = ($data['RegistrationScore'][3]['semester_1'] + $data['RegistrationScore'][3]['semester_2'] + $data['RegistrationScore'][3]['semester_3'] + $data['RegistrationScore'][3]['semester_4'] + $data['RegistrationScore'][3]['semester_5']) / 5;
+            #$nilai_matematika = ($data['RegistrationScore'][4]['semester_1'] + $data['RegistrationScore'][4]['semester_2'] + $data['RegistrationScore'][4]['semester_3'] + $data['RegistrationScore'][4]['semester_4'] + $data['RegistrationScore'][4]['semester_5']) / 5;
+            #$nilai_ipa = ($data['RegistrationScore'][5]['semester_1'] + $data['RegistrationScore'][5]['semester_2'] + $data['RegistrationScore'][5]['semester_3'] + $data['RegistrationScore'][5]['semester_4'] + $data['RegistrationScore'][5]['semester_5']) / 5;
             
+            // Validasi Nilai Bhs. Indonesia
+            $nilai_indo = true;
+            foreach ($data['RegistrationScore'][2] as $nilai) {
+                if ($nilai < $nilai_minimal_mapel) {
+                    $nilai_indo = false;
+                }
+            }
+
+            // Validasi Nilai Matematika
+            $nilai_matematika = true;
+            foreach ($data['RegistrationScore'][4] as $nilai) {
+                if ($nilai < $nilai_minimal_mapel) {
+                    $nilai_matematika = false;
+                }
+            }
+
+            // Validasi Nilai Matematika
+            $nilai_ipa = true;
+            foreach ($data['RegistrationScore'][5] as $nilai) {
+                if ($nilai < $nilai_minimal_mapel) {
+                    $nilai_ipa = false;
+                }
+            }
+
             if($rata_semester1 >= $nilai_per_semester 
                 && $rata_semester2 >= $nilai_per_semester 
                 && $rata_semester3 >= $nilai_per_semester 
                 && $rata_semester4 >= $nilai_per_semester 
                 && $rata_semester5 >= $nilai_per_semester 
-                && $nilai_indo >= $nilai_semua_semester 
-                && $nilai_inggris >= $nilai_semua_semester 
-                && $nilai_matematika >= $nilai_semua_semester
-                && $nilai_ipa >= $nilai_semua_semester){
+                && $nilai_indo
+                && $nilai_matematika
+                && $nilai_ipa
+                #&& $nilai_indo >= $nilai_semua_semester 
+                #&& $nilai_inggris >= $nilai_semua_semester 
+                #&& $nilai_matematika >= $nilai_semua_semester
+                #&& $nilai_ipa >= $nilai_semua_semester
+                ){
                 
                 return true;
             }

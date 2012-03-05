@@ -57,7 +57,8 @@ class RegistrationsController extends AppController {
 
             $options = array(
                 'nilai_per_semester' => $this->Option->getValue('nilai_rata_vertical'),
-                'nilai_semua_semester' => $this->Option->getValue('nilai_rata_horizontal')
+                'nilai_semua_semester' => $this->Option->getValue('nilai_rata_horizontal'),
+                'nilai_minimal_mapel' => $this->Option->getValue('nilai_minimal_mapel')
             );
             
             if($this->Registration->validateNilai($this->data,$options)){
