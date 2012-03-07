@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
     // check nisn
     var passuri = $('#passing_url').val();
     var checkuser_url = $('#checkuser_url').val();
-    console.log(checkuser_url);
+
     $('#RegistrationNisn').bindWithDelay('keyup',function(){
         var nis = $(this).val();
         

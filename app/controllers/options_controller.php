@@ -11,6 +11,7 @@ class OptionsController extends AppController {
     function profileSekolah(){
         $this->set('title_for_layout',__('Profile Sekolah | PPDB Online '.$this->Option->getValue('nama_sekolah'),true));
         $data['nama_sekolah'] = $this->Option->getValue('nama_sekolah');
+        $data['kepsek'] = $this->Option->getValue('kepsek');
         $data['alamat'] = $this->Option->getValue('alamat');
         $data['kodepos'] = $this->Option->getValue('kodepos');
 		$data['kecamatan'] = $this->Option->getValue('kecamatan');
@@ -82,6 +83,20 @@ class OptionsController extends AppController {
             $data['tanggal_seleksi_akademik'] = $this->Option->getValue('tanggal_seleksi_akademik');
             $data['tanggal_psikotes'] = $this->Option->getValue('tanggal_psikotes');
             $data['tanggal_hasil_seleksi'] = $this->Option->getValue('tanggal_hasil_seleksi');
+
+            $data['link_cara_mendaftar'] = $this->Option->getValue('link_cara_mendaftar');
+            $data['link_syarat_mendaftar'] = $this->Option->getValue('link_syarat_mendaftar');
+            $data['link_berita_sekolah'] = $this->Option->getValue('link_berita_sekolah');
+            $data['link_event'] = $this->Option->getValue('link_event');
+            $data['link_media'] = $this->Option->getValue('link_media');
+
+            $data['link_misi'] = $this->Option->getValue('link_misi');
+            $data['link_struktur_organisasi'] = $this->Option->getValue('link_struktur_organisasi');
+            $data['link_sambutan_kepsek'] = $this->Option->getValue('link_sambutan_kepsek');
+
+            $data['social_fb'] = $this->Option->getValue('social_fb');
+            $data['social_twitter'] = $this->Option->getValue('social_twitter');
+            $data['social_feed'] = $this->Option->getValue('social_feed');
         }
         $this->set(compact('data'));
     }

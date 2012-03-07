@@ -27,7 +27,7 @@
     <input type="text" name="data[RegistrationScore][2][semester_4]" maxlength="8" class="grid_2 field txtcenter" />
     <input type="text" name="data[RegistrationScore][2][semester_5]" maxlength="8" class="grid_2 field txtcenter" />
 </div>
-
+<?php /*
 <div class="input_nilai ">
     <label><?php __('Bahasa Inggris')?></label>
     <input type="hidden" name="data[RegistrationScore][3][mapel_id]" value="4" />
@@ -37,7 +37,7 @@
     <input type="text" name="data[RegistrationScore][3][semester_4]" maxlength="8" class="grid_2 field txtcenter" />
     <input type="text" name="data[RegistrationScore][3][semester_5]" maxlength="8" class="grid_2 field txtcenter" />
 </div>
-
+*/?>
 <div class="input_nilai ">
     <label><?php __('Matematika')?></label>
     <input type="hidden" name="data[RegistrationScore][4][mapel_id]" value="5" />
@@ -69,7 +69,7 @@
 </div>
 
 <div class="input_nilai ">
-    <label><?php __('Seni dan Budaya')?></label>
+    <label><?php __('Seni, Budaya dan Keterampilan')?></label>
     <input type="hidden" name="data[RegistrationScore][7][mapel_id]" value="8" />
     <input type="text" name="data[RegistrationScore][7][semester_1]" maxlength="8" class="grid_2 field txtcenter" />
     <input type="text" name="data[RegistrationScore][7][semester_2]" maxlength="8" class="grid_2 field txtcenter" />
@@ -87,7 +87,7 @@
     <input type="text" name="data[RegistrationScore][8][semester_4]" maxlength="8" class="grid_2 field txtcenter" />
     <input type="text" name="data[RegistrationScore][8][semester_5]" maxlength="8" class="grid_2 field txtcenter" />
 </div>
-
+<?php /*
 <div class="input_nilai ">
     <label><?php __('Teknologi Informasi dan Komunikasi')?></label>
     <input type="hidden" name="data[RegistrationScore][9][mapel_id]" value="10" />
@@ -97,3 +97,4 @@
     <input type="text" name="data[RegistrationScore][9][semester_4]" maxlength="8" class="grid_2 field txtcenter" />
     <input type="text" name="data[RegistrationScore][9][semester_5]" maxlength="8" class="grid_2 field txtcenter" />
 </div>
+*/ ?>

@@ -77,7 +77,21 @@ class AppController extends Controller {
                 'no_faks' => $this->Option->getValue('no_faks'),
                 'email' => $this->Option->getValue('email'),
                 'website' => $this->Option->getValue('website'),
-                'tahun_pelajaran' => $this->Option->getValue('tahun_pelajaran'),                                                                                
+                'tahun_pelajaran' => $this->Option->getValue('tahun_pelajaran'),
+
+                'link_cara_mendaftar' => $this->Option->getValue('link_cara_mendaftar'),
+                'link_syarat_mendaftar' => $this->Option->getValue('link_syarat_mendaftar'),
+                'link_berita_sekolah' => $this->Option->getValue('link_berita_sekolah'),
+                'link_event' => $this->Option->getValue('link_event'),
+                'link_media' => $this->Option->getValue('link_media'),
+
+                'link_misi' => $this->Option->getValue('link_misi'),
+                'link_struktur_organisasi' => $this->Option->getValue('link_struktur_organisasi'),
+                'link_sambutan_kepsek' => $this->Option->getValue('link_sambutan_kepsek'),
+
+                'social_fb' => $this->Option->getValue('social_fb'),
+                'social_twitter' => $this->Option->getValue('social_twitter'),
+                'social_feed' => $this->Option->getValue('social_feed'),
             );
             
             $this->set(compact('options'));

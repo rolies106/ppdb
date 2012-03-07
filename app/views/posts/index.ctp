@@ -2,7 +2,7 @@
 <?php #$javascript->link('mylibs/jquery.carouFredSel-3.2.0', false); ?>
 <?php $javascript->link('mylibs/jquery.nivo.slider.pack', false); ?>
 <?php $javascript->link('home/application', false); ?>
-        
+
         <?php if(!empty($features)): ?>
         
         <div class="top_container relative top-border-radius css3pie">
@@ -34,7 +34,9 @@
                     
                     <article class="mb40">
                         <header>
-                            <h2><?php echo $latestpost['Post']['post_title']; ?></h2>
+                            <h2>
+                                <?php echo $this->Html->link($latestpost['Post']['post_title'],array('admin'=>false,'controller'=>'posts','action'=>'view',$latestpost['Post']['id']),array('class'=>'')); ?>
+                            </h2>
                         </header>
                         
                         <a href="<?php echo Router::url('/'); ?>img/uploads/<?php echo $latestpost['Post']['post_image']; ?>" class="colorbox">

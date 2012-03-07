@@ -114,25 +114,31 @@ class Registration extends AppModel {
             
             // Validasi Nilai Bhs. Indonesia
             $nilai_indo = true;
-            foreach ($data['RegistrationScore'][2] as $nilai) {
-                if ($nilai < $nilai_minimal_mapel) {
-                    $nilai_indo = false;
+            foreach ($data['RegistrationScore'][2] as $key => $nilai) {
+                if ($key != 'mapel_id') {
+                    if ($nilai < $nilai_minimal_mapel) {
+                        $nilai_indo = false;
+                    }
                 }
             }
 
             // Validasi Nilai Matematika
             $nilai_matematika = true;
-            foreach ($data['RegistrationScore'][4] as $nilai) {
-                if ($nilai < $nilai_minimal_mapel) {
-                    $nilai_matematika = false;
+            foreach ($data['RegistrationScore'][4] as $key => $nilai) {
+                if ($key != 'mapel_id') {
+                    if ($nilai < $nilai_minimal_mapel) {
+                        $nilai_matematika = false;
+                    }
                 }
             }
 
             // Validasi Nilai Matematika
             $nilai_ipa = true;
-            foreach ($data['RegistrationScore'][5] as $nilai) {
-                if ($nilai < $nilai_minimal_mapel) {
-                    $nilai_ipa = false;
+            foreach ($data['RegistrationScore'][5] as $key => $nilai) {
+                if ($key != 'mapel_id') {
+                    if ($nilai < $nilai_minimal_mapel) {
+                        $nilai_ipa = false;
+                    }
                 }
             }
 

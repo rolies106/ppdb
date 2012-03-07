@@ -18,6 +18,21 @@
     echo $this->Form->input('Option.tanggal_psikotes',array('label'=>__('Tanggal Psikotes',true),'value'=>$data['tanggal_psikotes'], 'class' => 'datepicker'));
     echo $this->Form->input('Option.tanggal_hasil_seleksi',array('label'=>__('Tanggal Hasil Seleksi',true),'value'=>$data['tanggal_hasil_seleksi'], 'class' => 'datepicker'));
     echo $this->Form->input('Option.text_pembuka_pengumuman',array('value'=>$data['text_pembuka_pengumuman'], 'type'=>'textarea', 'label'=>'Text Pembuka Pada Halaman Pengumuman', 'class'=>'ckeditor'));
+
+    echo $this->Form->input('Option.link_cara_mendaftar',array('label'=>__('Link Post Cara Mendaftar',true),'value'=>$data['link_cara_mendaftar'], 'class' => ''));
+    echo $this->Form->input('Option.link_syarat_mendaftar',array('label'=>__('Link Post Syarat Pendaftaran',true),'value'=>$data['link_syarat_mendaftar'], 'class' => ''));
+    echo $this->Form->input('Option.link_berita_sekolah',array('label'=>__('Link Post Berita Sekolah',true),'value'=>$data['link_berita_sekolah'], 'class' => ''));
+    echo $this->Form->input('Option.link_event',array('label'=>__('Link Post Event',true),'value'=>$data['link_event'], 'class' => ''));
+    echo $this->Form->input('Option.link_media',array('label'=>__('Link Post Media',true),'value'=>$data['link_media'], 'class' => ''));
+
+    echo $this->Form->input('Option.link_misi',array('label'=>__('Link Post Visi dan Misi',true),'value'=>$data['link_misi'], 'class' => ''));
+    echo $this->Form->input('Option.link_struktur_organisasi',array('label'=>__('Link Post Struktur Organisasi',true),'value'=>$data['link_struktur_organisasi'], 'class' => ''));
+    echo $this->Form->input('Option.link_sambutan_kepsek',array('label'=>__('Link Post Sambutan Kepsek',true),'value'=>$data['link_sambutan_kepsek'], 'class' => ''));
+    
+    echo $this->Form->input('Option.social_fb',array('label'=>__('Link Facebook',true),'value'=>$data['social_fb'], 'class' => ''));
+    echo $this->Form->input('Option.social_twitter',array('label'=>__('Link Twitter',true),'value'=>$data['social_fb'], 'class' => ''));
+    echo $this->Form->input('Option.social_feed',array('label'=>__('Link Feed',true),'value'=>$data['social_feed'], 'class' => ''));
+
     echo $this->Form->end('Save Settings');
 ?>
 </div>

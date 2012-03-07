@@ -33,6 +33,7 @@
  */
 	//Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
     Router::connect('/pages/*', array('controller' => 'posts', 'action' => 'index'));
+    Router::connect('/berita/detail/*', array('controller' => 'posts', 'action' => 'view'));
     Router::connect('/daftar', array('controller' => 'registrations', 'action' => 'add'));
     Router::connect('/pengumuman', array('controller' => 'registrations', 'action' => 'listAll'));
     Router::connect('/login', array('controller' => 'users', 'action' => 'login'));

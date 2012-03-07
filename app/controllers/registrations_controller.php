@@ -86,9 +86,17 @@ class RegistrationsController extends AppController {
                 $nextYear = $this->Option->getValue('tahun_pelajaran') + 1;
                 $text = ($this->data['Registration']['passed_by_register'] == 1) ? __('Selamat Anda dapat melanjutkan proses untuk mengikuti sebagai calon siswa PPDB '.$this->Option->getValue('nama_sekolah').' Tahun Pelajaran '.$this->Option->getValue('tahun_pelajaran').'/'.$nextYear.'.',true) : __('Maaf Anda tidak dapat melanjutkan proses untuk mengikuti sebagai calon siswa pada PPDB '.$this->Option->getValue('nama_sekolah').' Tahun Pelajaran '.$this->Option->getValue('tahun_pelajaran').'/'.$nextYear.', dikarenakan nilai rata-rata anda kurang dari '.$this->Option->getValue('nilai_rata_vertical').', Terima kasih.',true);
                 $text_verifikasi = ($this->data['Registration']['passed_by_register'] == 1) ? __('Tanggal verifikasi : ', true).$dateFormat->changeDateFormat($this->data['Registration']['tanggal_verifikasi']): '';
+                
+                # Text Account
+                $text_account = 'Anda dapat login ke akun anda menggunakan detail berikut : <br/><br/>';
+                $text_account .= 'Username : ' . $this->data['Registration']['nisn'] . '<br/>';
+                $text_account .= 'Password : ' . $this->data['User']['secretword'];
+
                 $mail_options = array(
                     'message' => $text,
-                    'text_verifikasi' => $text_verifikasi
+                    'text_verifikasi' => $text_verifikasi,
+                    'text_account' => $text_account,
+                    'nisn' => $this->data['Registration']['nisn'],
                 );
                 
                 $this->_sendNewUserMail($this->data['Registration']['nisn'],$mail_options);
@@ -104,13 +112,14 @@ class RegistrationsController extends AppController {
 		$this->loadModel('Option');
 			$option = array(
                 'nama_sekolah' => $this->Option->getValue('nama_sekolah'),
+                'nama_aplikasi' => $this->Option->getValue('nama_aplikasi'),
 				'tahunPelajaran' => $this->Option->getValue('tahun_pelajaran'),
 				'nilai_rata_vertical' => $this->Option->getValue('nilai_rata_vertical')
             );
 
 		$next_year = $option['tahunPelajaran'] + 1;
 			
-        $this->set('title_for_layout',__('Share with your friends in social media | PPDB Online '.$this->Option->getValue('nama_sekolah'),true));
+        $this->set('title_for_layout',__('Share with your friends in social media | PPDB Online '. $option['nama_sekolah'],true));
         if(!$this->Session->read('registered')){
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
@@ -123,12 +132,13 @@ class RegistrationsController extends AppController {
         $msg = __('Selamat Anda dapat melanjutkan proses untuk mengikuti sebagai calon siswa ' . $option['nama_sekolah'] . ' Tahun Pelajaran ' . $option['tahunPelajaran'] . '/' . $next_year . ', Silahkan melakukan verifikasi langsung ke ' . $option['nama_sekolah'] . ' pada tanggal <strong>'. $dateFormat->changeDateFormat($this->Session->read('tgl_verify')) . '</strong>. <br />Tekan tombol Cetak/Print sebagai data verifikasi', true);
         }
         else{
-            $msg = __('Maaf Anda tidak dapat melanjutkan proses untuk mengikuti sebagai calon siswa pada ' . $option['nama_sekolah'] . ' Tahun Pelajaran ' . $option['tahunPelajaran'] . '/' . $next_year . ', dikarenakan nilai rata-rata anda kurang dari ' . $option['nilai_rata_vertical'] . ', Terima kasih.', true);
+            #$msg = __('Maaf Anda tidak dapat melanjutkan proses untuk mengikuti sebagai calon siswa pada ' . $option['nama_sekolah'] . ' Tahun Pelajaran ' . $option['tahunPelajaran'] . '/' . $next_year . ', dikarenakan nilai rata-rata anda kurang dari ' . $option['nilai_rata_vertical'] . ', Terima kasih.', true);
+            $msg = __('Maaf Anda tidak dapat melanjutkan proses untuk mengikuti sebagai calon siswa pada ' . $option['nama_sekolah'] . ' Tahun Pelajaran ' . $option['tahunPelajaran'] . '/' . $next_year . ', dikarenakan nilai Anda tidak masuk dalam Ketentuan PPDB yang telah ditetapkan, Terima kasih.', true);
         }
         
         $pass = $this->Session->read('passed_register');
         
-        $this->set(compact('msg','pass'));
+        $this->set(compact('msg','pass','option'));
     }
     
     function cetakDocPendaftaran($id = null){
@@ -155,12 +165,14 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
         
-        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=> $nisn)));
         $this->set(compact('dataSiswa', 'option'));
     }
     
@@ -188,12 +200,14 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
 
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
         
-        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         $this->set(compact('dataSiswa', 'option'));
     }
     
@@ -238,7 +252,7 @@ class RegistrationsController extends AppController {
         $this->set(compact('dataSiswa', 'option', 'next_year', 'totalNilai'));
     }
         
-    function cetakDocNilai(){
+    function cetakDocNilai($id = NULL){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         
         if (!$this->Session->read('registered'))
@@ -267,14 +281,16 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
 
-        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         $label = $this->Session->read('registered');
         $mapel = array(1 => 'Pendidikan Agama','Pendidikan Kewarganegaraan', 'Bahasa Indonesia', 'Bahasa Inggris','Matematika','IPA','IPS','Seni dan Budaya','Pendidikan Jasmani dan Kesehatan','Teknologi Informasi dan Komunikasi');
         $dataNilai = compact('data','mapel','label');
         $this->set(compact('dataNilai', 'option'));
     }
     
-    function printKartuPeserta(){
+    function printKartuPeserta($id = NULL){
         $this->loadModel('Option');
         
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
@@ -318,7 +334,8 @@ class RegistrationsController extends AppController {
 		define('PDF_MARGIN_BOTTOM_C', '10');
 		
         // read data
-        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         
         $this->set(compact('option','data'));
     }

@@ -108,29 +108,53 @@
             <div class="grid_5 box">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Cara mendaftar PPDB</a></li>
-                    <li><a href="#">Persyaratan PPDB</a></li>
-                    <li><a href="#">Berita Sekolah</a></li>
-                    <li><a href="#">Event Calendar</a></li>
-                    <li><a href="#">Media</a></li>
+                    <?php if ($options['link_cara_mendaftar']): ?>
+                        <li><a href="<?php echo $options['link_cara_mendaftar']; ?>">Cara mendaftar PPDB</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_syarat_mendaftar']): ?>
+                        <li><a href="<?php echo $options['link_syarat_mendaftar']; ?>">Persyaratan PPDB</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_berita_sekolah']): ?>
+                        <li><a href="<?php echo $options['link_berita_sekolah']; ?>">Berita Sekolah</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_event']): ?>
+                        <li><a href="<?php echo $options['link_event']; ?>">Event Calendar</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_media']): ?>
+                        <li><a href="<?php echo $options['link_media']; ?>">Media</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
             <div class="grid_5 box">
                 <h3>Explore</h3>
                 <ul>
-                    <li><a href="#">Our Missions</a></li>
-                    <li><a href="#">Struktur Organisasi</a></li>
-                    <li><a href="#">Sambutan Kepala Sekolah</a></li>
+                    <?php if ($options['link_misi']): ?>
+                        <li><a href="<?php echo $options['link_misi']; ?>">Our Missions</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_struktur_organisasi']): ?>
+                        <li><a href="<?php echo $options['link_struktur_organisasi']; ?>">Struktur Organisasi</a></li>
+                    <?php endif; ?>
+                    <?php if ($options['link_sambutan_kepsek']): ?>
+                        <li><a href="<?php echo $options['link_sambutan_kepsek']; ?>">Sambutan Kepala Sekolah</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="grid_6 box">
                 <h3>Ikuti Kami Di</h3>
                 <ul class="follow">
-                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/facebook.png" /></li>
-                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/twitter.png" /></li>
-                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/rss.png" /></li>
-                    <li><img src="<?php echo Router::url('/',true) ?>img/icon/mail.png" /></li>
+                    <?php if ($options['social_fb']): ?>
+                        <li><a href="<?php echo $options['social_fb']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/facebook.png" /></a></li>
+                    <?php endif; ?>   
+                    <?php if ($options['social_twitter']): ?>
+                        <li><a href="<?php echo $options['social_twitter']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/twitter.png" /></a></li>
+                    <?php endif; ?>   
+                    <?php if ($options['social_feed']): ?>
+                        <li><a href="<?php echo $options['social_feed']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/rss.png" /></a></li>
+                    <?php endif; ?>   
+                    <?php if ($options['email']): ?>
+                        <li><a href="mailto:<?php echo $options['email']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/mail.png" /></a></li>
+                    <?php endif; ?>   
                 </ul>
             </div>
         </div>
