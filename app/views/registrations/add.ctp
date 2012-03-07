@@ -31,16 +31,18 @@
                     </h2>
 					
                     <h3 class="grid_6 helvetica txtright size24bold"><?php __('Mata Pelajaran')?></h3>
-                    <h3 class="grid_10 helvetica center size24bold"><?php __('Semester') ?></h3>
+                    <h3 class="grid_5 helvetica center fsize18bold mli"><?php __('Kelas 4') ?></h3>
+                    <h3 class="grid_4 helvetica center fsize18bold"><?php __('Kelas 5') ?></h3>
+                    <h3 class="grid_3 helvetica center fsize18bold"><?php __('Kelas 6') ?></h3>
                     <div class="clear"></div>
                     
                     <div class="input">
                         <label>&nbsp;</label>
-                        <div class="grid_2 center helvetica size24bold semester-title">1</div>
-                        <div class="grid_2 center helvetica size24bold semester-title">2</div>
-                        <div class="grid_2 center helvetica size24bold semester-title">3</div>
-                        <div class="grid_2 center helvetica size24bold semester-title">4</div>
-                        <div class="grid_2 center helvetica size24bold semester-title">5</div>
+                        <div class="grid_2 center helvetica fsize18bold semester-title">SMT 1</div>
+                        <div class="grid_2 center helvetica fsize18bold semester-title">SMT 2</div>
+                        <div class="grid_2 center helvetica fsize18bold semester-title">SMT 1</div>
+                        <div class="grid_2 center helvetica fsize18bold semester-title">SMT 2</div>
+                        <div class="grid_2 center helvetica fsize18bold semester-title">SMT 1</div>
                     </div>
                     
                     <?php echo $this->element('input_nilai'); ?>

@@ -184,6 +184,7 @@ p.last		{margin-bottom:0px;}
 .mln{margin-left:0}
 .mls{margin-left:5px}
 .mlm{margin-left:10px}
+.mli{margin-left:15px}
 .mll{margin-left:20px}
 .mlxl{margin-left:40px}
 .mhn{margin-left:0;margin-right:0}
@@ -200,6 +201,7 @@ p.last		{margin-bottom:0px;}
 .fsize11{font-size:11px;}
 .fsize14{font-size:14px;}
 .fsize18{font-size: 18px;}
+.fsize18bold{font-size: 18px;font-weight:bold;}
 .fsize30{font-size:30px;}
 .size24{font-size:24px;}
 .size24bold{font-size:24px;font-weight:bold;}
