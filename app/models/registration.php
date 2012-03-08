@@ -105,7 +105,7 @@ class Registration extends AppModel {
             $rata_semester4 = $nilai_semester4 / $jml_pelajaran;
             $rata_semester5 = $nilai_semester5 / $jml_pelajaran;
             
-            $nilai_rata_total = ($nilai_semester1 + $nilai_semester2 +$nilai_semester3 + $nilai_semester4 + $nilai_semester5) / $jml_pelajaran;
+            #$nilai_rata_total = ($nilai_semester1 + $nilai_semester2 +$nilai_semester3 + $nilai_semester4 + $nilai_semester5) / $jml_pelajaran;
 
             // validate 4 nilai mata pelajaran penting
             $nilai_indo = ($data['RegistrationScore'][2]['semester_1'] + $data['RegistrationScore'][2]['semester_2'] + $data['RegistrationScore'][2]['semester_3'] + $data['RegistrationScore'][2]['semester_4'] + $data['RegistrationScore'][2]['semester_5']) / 5;
@@ -118,7 +118,7 @@ class Registration extends AppModel {
                 && $rata_semester3 >= $nilai_per_semester 
                 && $rata_semester4 >= $nilai_per_semester 
                 && $rata_semester5 >= $nilai_per_semester
-                && $nilai_rata_total >= $nilai_rata_total_min 
+                #&& $nilai_rata_total >= $nilai_rata_total_min 
                 && $nilai_indo >= $nilai_semua_semester 
                 && $nilai_inggris >= $nilai_semua_semester 
                 && $nilai_matematika >= $nilai_semua_semester

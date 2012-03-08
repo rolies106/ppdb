@@ -33,9 +33,9 @@
                     </h2>
 					
                     <h3 class="grid_6 helvetica txtright size24bold"><?php __('Mata Pelajaran')?></h3>
-                    <h3 class="grid_5 helvetica center fsize18bold mli"><?php __('Kelas 4') ?></h3>
-                    <h3 class="grid_4 helvetica center fsize18bold"><?php __('Kelas 5') ?></h3>
-                    <h3 class="grid_3 helvetica center fsize18bold"><?php __('Kelas 6') ?></h3>
+                    <h3 class="grid_5 helvetica center fsize18bold mli"><?php __('Kelas 7') ?></h3>
+                    <h3 class="grid_4 helvetica center fsize18bold"><?php __('Kelas 8') ?></h3>
+                    <h3 class="grid_3 helvetica center fsize18bold"><?php __('Kelas 9') ?></h3>
                     <div class="clear"></div>
                     
                     <div class="input">
