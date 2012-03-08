@@ -176,7 +176,7 @@ class RegistrationsController extends AppController {
         $this->set(compact('dataSiswa', 'option'));
     }
     
-    function cetakDocPernyataan(){
+    function cetakDocPernyataan($id = NULL){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
 
 		$this->loadModel('Option');
