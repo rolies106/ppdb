@@ -94,7 +94,7 @@ p.space { margin-bottom: 10px;}
 		<td width="70px"></td>
         <td class="pas_photo"><br /><br /><br /><br />Pas Photo<br />3x4</td>
         <td width="180px" align="center">
-			<?php echo $option['kecamatan']; ?>, 25 Maret <?php echo date('Y'); ?><br />
+			<?php echo $option['kecamatan']; ?>, ...............................<?php echo date('Y');?><br />
 			Panitia PPDB Online TP. <?php echo $option['tahunPelajaran'].'/'.$option['nextTahunPelajaran']; ?>
 			<br /><br /><br /><br /><br />
             <?php echo $option['panitia']; ?>

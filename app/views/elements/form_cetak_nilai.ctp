@@ -3,7 +3,8 @@
 .capitalize{text-transform:uppercase;}
 .mbl{margin-bottom: 100px;}
 table{border-collapse: collapse;border-spacing: 0;}
-.nilai td{height:30px;vertical-align:middle;}
+.nilai td{padding:5px;vertical-align:middle;}
+.nilai tr{vertical-align:middle;}
 .underline{border-bottom: 1px solid #333333;}
 </style>
 <div align="right"><?php echo date('d-m-Y H:i:s') . ' ID ' . $dataNilai['data']['Registration']['id']?></div>
@@ -26,11 +27,12 @@ table{border-collapse: collapse;border-spacing: 0;}
 
 <p>&nbsp;</p>
 
-<table class="nilai">
-    <tr>
+<table class="nilai" border="1" cellpadding="5">
+    <tr valign="middle">
         <td rowspan="2" valign="middle" align="center" width="250"><strong><?php __('Mata Pelajaran')?></strong></td>
-        <td colspan="4" align="center"><strong><?php __('Semester')?></strong></td>
-		<td></td>
+        <td colspan="2" width="160" align="center"><strong>Kelas 7</strong></td>
+        <td colspan="2" width="160" align="center"><strong>Kelas 8</strong></td>
+        <td width="80" align="center"><strong>Kelas 9</strong></td>
     </tr>
     <tr>
         <td width="80" align="center"><strong>1</strong></td>
