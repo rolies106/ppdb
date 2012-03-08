@@ -14,8 +14,10 @@
 
 				<a href='#content1' label='1'><?php __('Input Data Pribadi') ?></a>
 				<a href='#content2' label='2'><?php __('Input Nilai') ?></a>
+                <?php /*
                 <a href='#content3' label='3'><?php __('Login Detail')?></a>
-				<a href='#content4' label='4'><?php __('Konfirmasi')?></a>
+                */?>
+				<a href='#content4' label='3'><?php __('Konfirmasi')?></a>
 				<fieldset id='content1'>
                     <h2 class="title helvetica">
                         <?php __('Pastikan Nomor Induk Siswa Nasional (NISN) Anda benar dan isikan data dengan benar, Hanya data-data yang diisi dengan benar dan yang memenuhi persyaratan yang akan kami proses ke tahap berikutnya.')?>
@@ -46,7 +48,7 @@
                     <?php echo $this->element('input_nilai'); ?>
                     
                 </fieldset><!-- /fieldset 2-->
-                
+                <?php /*
                 <fieldset id='content3'>
                     <h2 class="title helvetica">
                         <?php __('Informasi detail untuk login (digunakan saat melakukan pengecekan kelulusan)')?>
@@ -55,7 +57,7 @@
                     <?php echo $this->element('input_user'); ?>
                     
                 </fieldset><!-- /fieldset 3-->
-
+                */?>
 				<fieldset id='content4'>
                     <h2 class="title helvetica">
                         <?php __('Pernyataan Persetujuan')?>

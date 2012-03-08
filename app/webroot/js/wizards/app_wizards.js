@@ -130,7 +130,7 @@ jQuery(document).ready(function($){
                     $("#content1").prepend("<div class='alert css3pie relative'>Mohon diisi field-field yang bertanda merah !</div>");
                     return false;
                 }
-            }
+            }/*
             else if(stepNumber==3)
             {
                 $("#content2 .alert").remove();
@@ -145,7 +145,7 @@ jQuery(document).ready(function($){
                     $("#content2").prepend("<div class='alert css3pie relative'>Mohon data nilai diisi semua pada setiap semester !</div>");
                     return false;
                 }
-            }            
+            }*/
             else if(stepNumber==4)
             {
                 $('.available_true').remove();

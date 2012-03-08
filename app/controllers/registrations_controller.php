@@ -50,13 +50,14 @@ class RegistrationsController extends AppController {
         if(!empty($this->data)) {
             
             # User extra data
-            $this->data['User']['level'] = 4;
-            $this->data['User']['status'] = 1;
-            $this->data['User']['register_date'] = date('Y-m-d H:i:s');
+            #$this->data['User']['level'] = 4;
+            #$this->data['User']['status'] = 1;
+            #$this->data['User']['register_date'] = date('Y-m-d H:i:s');
 
             $options = array(
                 'nilai_per_semester' => $this->Option->getValue('nilai_rata_vertical'),
-                'nilai_semua_semester' => $this->Option->getValue('nilai_rata_horizontal')
+                'nilai_semua_semester' => $this->Option->getValue('nilai_rata_horizontal'),
+                'nilai_rata_total' => $this->Option->getValue('nilai_rata_total')
             );
             
             if($this->Registration->validateNilai($this->data,$options)){

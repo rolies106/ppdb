@@ -81,6 +81,7 @@ class Registration extends AppModel {
             // define nilai awal
             $nilai_per_semester = $options['nilai_per_semester'];
             $nilai_semua_semester = $options['nilai_semua_semester'];
+            $nilai_rata_total_min = $options['nilai_rata_total'];
             $jml_pelajaran = count($data['RegistrationScore']);
             $nilai_semester1 = '';
             $nilai_semester2 = '';
@@ -104,6 +105,8 @@ class Registration extends AppModel {
             $rata_semester4 = $nilai_semester4 / $jml_pelajaran;
             $rata_semester5 = $nilai_semester5 / $jml_pelajaran;
             
+            $nilai_rata_total = ($nilai_semester1 + $nilai_semester2 +$nilai_semester3 + $nilai_semester4 + $nilai_semester5) / $jml_pelajaran;
+
             // validate 4 nilai mata pelajaran penting
             $nilai_indo = ($data['RegistrationScore'][2]['semester_1'] + $data['RegistrationScore'][2]['semester_2'] + $data['RegistrationScore'][2]['semester_3'] + $data['RegistrationScore'][2]['semester_4'] + $data['RegistrationScore'][2]['semester_5']) / 5;
             $nilai_inggris = ($data['RegistrationScore'][3]['semester_1'] + $data['RegistrationScore'][3]['semester_2'] + $data['RegistrationScore'][3]['semester_3'] + $data['RegistrationScore'][3]['semester_4'] + $data['RegistrationScore'][3]['semester_5']) / 5;
@@ -114,7 +117,8 @@ class Registration extends AppModel {
                 && $rata_semester2 >= $nilai_per_semester 
                 && $rata_semester3 >= $nilai_per_semester 
                 && $rata_semester4 >= $nilai_per_semester 
-                && $rata_semester5 >= $nilai_per_semester 
+                && $rata_semester5 >= $nilai_per_semester
+                && $nilai_rata_total >= $nilai_rata_total_min 
                 && $nilai_indo >= $nilai_semua_semester 
                 && $nilai_inggris >= $nilai_semua_semester 
                 && $nilai_matematika >= $nilai_semua_semester
@@ -189,9 +193,23 @@ class Registration extends AppModel {
         
         return $selisih = $jd2 - $jd1;
     }
-    
+
+    function checkDateInRange($start_date, $end_date, $date_from_user)
+    {
+        // Convert to timestamp
+        $start_ts = strtotime($start_date);
+        $end_ts = strtotime($end_date);
+        $user_ts = strtotime($date_from_user);
+
+        // Check that user date is between start & end
+        return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+    }
+        
     function isRegistrationOpened($date){
-        $selisih = $this->checkSelisihTanggal($date);
+        # Old ways
+        # @author Resa Rahman
+        /*$selisih = $this->checkSelisihTanggal($date);
+
         $date_begin = $date['date1'];
         $today = date('Y-m-d');
         $date_range = array();
@@ -202,14 +220,21 @@ class Registration extends AppModel {
             
             $date_begin++;    
         }
-        
+        die(var_dump($date_range));
         if(in_array($today,$date_range)){
             return true;
         }
         else {
             return false;
-        }
+        }*/
+
+        # New Ways
+        # @author RoliesTheBee
+        $today = date('Y-m-d');
+
+        $isOpen = $this->checkDateInRange($date['date1'], $date['date2'], $today);
         
+        return $isOpen;
         //debug($date_range);
     }
 }

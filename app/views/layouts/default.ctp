@@ -43,7 +43,7 @@
             <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
         </div>
         
-        <nav class="grid_11 prefix_8 topmenu">
+        <nav class="grid_9 prefix_10 topmenu">
             <ul>
                 <li class="<?php echo $menu->highlight('/$'); ?>">
                     <?php echo $this->Html->link(__('Beranda',true),array('admin'=>false,'controller'=>'posts','action'=>'index')); ?>
@@ -51,26 +51,12 @@
                 <li class="<?php echo $menu->highlight('/pengumuman$'); ?>">
                     <?php echo $this->Html->link(__('Pengumuman',true),array('admin'=>false,'controller'=>'registrations','action'=>'listAll')); ?>
                 </li>
-                <?php if ($this->Session->check('Auth.User.id') == false) { ?>
-                    <li class="<?php echo $menu->highlight('/daftar$'); ?>">
-                        <?php echo $this->Html->link(__('Daftar',true),array('admin'=>false,'controller'=>'registrations','action'=>'add')); ?>
-                    </li>
-                <?php } ?>
+                <li class="<?php echo $menu->highlight('/daftar$'); ?>">
+                    <?php echo $this->Html->link(__('Daftar',true),array('admin'=>false,'controller'=>'registrations','action'=>'add')); ?>
+                </li>
                 <li class="<?php echo $menu->highlight('/profile-sekolah$'); ?>">
                     <?php echo $this->Html->link(__('Sekolah',true),array('admin'=>false,'controller'=>'options','action'=>'profileSekolah')); ?>
                 </li>
-                <?php if ($this->Session->check('Auth.User.id') == false) { ?>
-                    <li class="<?php echo $menu->highlight('/login$'); ?>">
-                        <?php echo $this->Html->link(__('Login',true),array('admin'=>false,'controller'=>'users','action'=>'login')); ?>
-                    </li>
-                <?php } else { ?>
-                    <li class="<?php echo $menu->highlight('/member/profile$'); ?>">
-                        <?php echo $this->Html->link(__('Profile',true),array('member'=>true,'controller'=>'registrations','action'=>'profile')); ?>
-                    </li>
-                    <li class="<?php echo $menu->highlight('/users/logout$'); ?>">
-                        <?php echo $this->Html->link(__('Logout',true),array('admin'=>false,'controller'=>'users','action'=>'logout')); ?>
-                    </li>
-                <?php } ?>
             </ul>
         </nav>
         <div class="clear"></div>
