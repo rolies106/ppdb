@@ -255,7 +255,7 @@ class RegistrationsController extends AppController {
     function cetakDocNilai($id = NULL){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
@@ -295,7 +295,7 @@ class RegistrationsController extends AppController {
         
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
