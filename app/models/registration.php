@@ -160,6 +160,14 @@ class Registration extends AppModel {
             }
             $date++;
         }
+
+        $now = strtotime(date('Y-m-d'));
+        $date = strtotime($verify_date);
+
+        if ($now > $date) {
+            $verify_date = date('Y-m-d', $now + (60*60*24));
+        }
+
         return $verify_date;
         //echo $verify_date.' '.$group.' '.$d;
     }
@@ -168,6 +176,7 @@ class Registration extends AppModel {
         $tgl1 = $dates['date1'];
         $tgl2 = $dates['date2'];
         
+        /* Commented the old ways
         // memecah tanggal untuk mendapatkan bagian tanggal, bulan dan tahun
         // dari tanggal pertama
         
@@ -190,8 +199,15 @@ class Registration extends AppModel {
         $jd2 = GregorianToJD($month2, $date2, $year2);
         
         // hitung selisih hari kedua tanggal
+        $selisih = $jd2 - $jd1;
         
         return $selisih = $jd2 - $jd1;
+        */
+
+        $diff = (abs(strtotime($tgl2) - strtotime($tgl1))) / (60*60*24);
+
+        return $diff;
+
     }
 
     function checkDateInRange($start_date, $end_date, $date_from_user)

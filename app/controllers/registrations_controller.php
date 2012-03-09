@@ -87,7 +87,9 @@ class RegistrationsController extends AppController {
                 $text_verifikasi = ($this->data['Registration']['passed_by_register'] == 1) ? __('Tanggal verifikasi : ', true).$dateFormat->changeDateFormat($this->data['Registration']['tanggal_verifikasi']): '';
                 $mail_options = array(
                     'message' => $text,
-                    'text_verifikasi' => $text_verifikasi
+                    'text_verifikasi' => $text_verifikasi,
+                    'passed_by_register' => $this->data['Registration']['passed_by_register'],
+                    'nisn' => $this->data['Registration']['nisn'],
                 );
                 
                 $this->_sendNewUserMail($this->data['Registration']['nisn'],$mail_options);
@@ -154,16 +156,18 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
         
-        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         $this->set(compact('dataSiswa', 'option'));
     }
     
-    function cetakDocPernyataan(){
+    function cetakDocPernyataan($id = NULL){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
 
 		$this->loadModel('Option');
@@ -187,19 +191,21 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
 
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
         
-        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $dataSiswa = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         $this->set(compact('dataSiswa', 'option'));
     }
     
-    function cetakDocNilai(){
+    function cetakDocNilai($id = NULL){
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
@@ -225,19 +231,21 @@ class RegistrationsController extends AppController {
 		define('PDF_HEADER_TITLE_C', $option['nama_aplikasi']);
 		define('PDF_HEADER_STRING_C', $option['nama_sekolah'] . " \nTahun Pelajaran " . $option['tahunPelajaran'] . ' - ' .  $next_year . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi']);
 
-        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+
+        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         $label = $this->Session->read('registered');
         $mapel = array(1 => 'Pendidikan Agama','Pendidikan Kewarganegaraan', 'Bahasa Indonesia', 'Bahasa Inggris','Matematika','IPA','IPS','Seni dan Budaya','Pendidikan Jasmani dan Kesehatan','Teknologi Informasi dan Komunikasi');
         $dataNilai = compact('data','mapel','label');
         $this->set(compact('dataNilai', 'option'));
     }
     
-    function printKartuPeserta(){
+    function printKartuPeserta($id = NULL){
         $this->loadModel('Option');
         
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
         
-        if (!$this->Session->read('registered'))
+        if (!$this->Session->read('registered') && $id == NULL)
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
@@ -276,7 +284,8 @@ class RegistrationsController extends AppController {
 		define('PDF_MARGIN_BOTTOM_C', '10');
 		
         // read data
-        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$this->Session->read('registered'))));
+        $nisn = ($this->Session->read('registered')) ? $this->Session->read('registered') : $id;
+        $data = $this->Registration->find('first',array('conditions'=>array('Registration.nisn'=>$nisn)));
         
         $this->set(compact('option','data'));
     }
