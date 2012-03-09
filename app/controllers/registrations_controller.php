@@ -96,6 +96,7 @@ class RegistrationsController extends AppController {
                     'message' => $text,
                     'text_verifikasi' => $text_verifikasi,
                     'text_account' => $text_account,
+                    'passed_by_register' => $this->data['Registration']['passed_by_register'],
                     'nisn' => $this->data['Registration']['nisn'],
                 );
                 

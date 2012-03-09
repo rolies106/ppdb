@@ -61,7 +61,7 @@
         <?php echo $html->image("twitter_share.jpg",array('alt' => 'share to twitter')); ?>
     </div>
     <div class="grid_11 prefix_1 inner-border-radius box_shadow css3pie relative">
-        <a href="http://twitter.com/share?url=<?php echo urlencode(Router::url(array('admin'=>false,'controller'=>'registrations','action'=>'add'),true)); ?>&text=<?php echo htmlspecialchars(__($option['nama_aplikasi'] . ' | ' . $option['nama_sekolah'], true),ENT_QUOTES); ?>" class="window_popup share_link size24"><?php __('Share di twitter')?></a>
+        <a href="http://twitter.com/share?url=<?php echo urlencode(Router::url(array('admin'=>false,'controller'=>'registrations','action'=>'add'),true)); ?>&text=<?php echo urlencode(__($option['nama_aplikasi'] . ' | ' . $option['nama_sekolah'], true)); ?>" class="window_popup share_link size24"><?php __('Share di twitter')?></a>
     </div>
     <div class="clear"></div>
     
