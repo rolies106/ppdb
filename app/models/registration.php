@@ -192,6 +192,14 @@ class Registration extends AppModel {
             }
             $date++;
         }
+
+        $now = strtotime(date('Y-m-d'));
+        $date = strtotime($verify_date);
+
+        if ($now > $date) {
+            $verify_date = date('Y-m-d', $now + (60*60*24));
+        }
+                
         return $verify_date;
         //echo $verify_date.' '.$group.' '.$d;
     }
