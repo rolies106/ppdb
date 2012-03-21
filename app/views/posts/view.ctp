@@ -1,4 +1,4 @@
-<div class="block_content grid_22 prefix_1 suffix_1">
+<div class="block_content grid_23 pal">
     <article class="mb40">
         <header>
             <h2><?php echo $post['Post']['post_title']; ?></h2>
