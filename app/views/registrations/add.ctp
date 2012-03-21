@@ -2,7 +2,7 @@
 <?php $javascript->link('mylibs/bindWithDelay', false); ?>
 <?php $javascript->link('wizards/app_wizards', false); ?>
 
-        <div class="block_content grid_22 prefix_1 suffix_1">
+        <div class="block_content grid_23 pal">
 		
 			<h2 class="page-title">Form Pendaftaran Siswa Baru</h2>
             <input type="hidden" id="passing_url" value="<?php echo Router::url(array('controller' => 'registrations','action' => 'checkAvailableNisn', 'member' => false)); ?>" />

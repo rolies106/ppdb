@@ -1,6 +1,6 @@
 <?php $javascript->link('home/datatables_app', false); ?>
 
-<div class="block_content grid_22 prefix_1 suffix_1">
+<div class="block_content grid_23 pal">
 
 <h2 class="page-title"><?php __('List Calon Siswa'); ?></h2>
 

@@ -8,7 +8,7 @@
 <div class="input select">
 <label><?php __('Post Type:')?></label>
 <?php
-    echo $this->Form->select('Post.post_type',array('post' =>'Post','feature'=>'Feature'),array('empty'=>'post'));
+    echo $this->Form->select('Post.post_type',array('post' =>'Berita','ppdb' => 'Seputar PPDB','feature'=>'Feature'),array('empty'=>'post'));
 ?>
 </div>
 <div class="input select">

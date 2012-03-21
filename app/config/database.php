@@ -78,9 +78,9 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => '',
-		'database' => 'cake_ppdb_prefix',
-		'prefix' => 'ppdb_',
+		'password' => 'root',
+		'database' => 'cake_ppdb',
+		'prefix' => '',
 	);
 
 	var $test = array(

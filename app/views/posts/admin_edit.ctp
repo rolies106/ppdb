@@ -9,7 +9,7 @@
 <div class="input select">
 <label><?php __('Post Type:')?></label>
 <?php
-    echo $this->Form->select('Post.post_type',array('post' =>'Post','feature'=>'Feature'));
+    echo $this->Form->select('Post.post_type',array('post' =>'Post','ppdb' => 'Seputar PPDB','feature'=>'Feature'));
 ?>
 </div>
 <div class="input select">

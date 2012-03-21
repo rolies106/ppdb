@@ -21,7 +21,7 @@
             
         </div><!-- /top_container -->
         
-        <div class="block_content grid_22 prefix_1 suffix_1">
+        <div class="block_content grid_23 pal">
             <article class="mb40">
                 <header>
                     <h2>Pendaftaran Siswa Baru dibuka</h2>

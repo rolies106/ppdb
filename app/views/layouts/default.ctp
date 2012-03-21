@@ -36,15 +36,12 @@
 
 <body>
 
+  <div id="container" class="container_24">
     <header id="header">
     
         <div id="header-wrapper" class="container_24">
-            <div class="grid_4 prefix_1">
-                <h1 class="logo mtl"><?php echo $html->image("logo.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
-            </div>
-            <div class="grid_18">
-                <h1 class="logo-text"><?php echo $options['nama_sekolah']; ?></h1>
-                <h2 class="slogan-text">Rintisan Sekolah Bertaraf Internasional</h2>
+            <div class="grid_24">
+                <h1 class="logo mtl"><?php echo $html->image("logo-full.png",array('alt' => 'SMAN 1 Tambun Selatan')); ?></h1>
             </div>
         </div>
         <div class="clear"></div>
@@ -84,9 +81,7 @@
         </div>
         <div class="clear"></div>
     </nav>
-
-  <div id="container" class="container_24">
-    
+        
     <div id="main" class="mainContent mb40- css3pie">
         <?php echo $content_for_layout; ?>
         <div class="clear"></div>
@@ -147,7 +142,7 @@
                         <li><a href="<?php echo $options['social_fb']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/facebook.png" /></a></li>
                     <?php endif; ?>   
                     <?php if ($options['social_twitter']): ?>
-                        <li><a href="<?php echo $options['social_twitter']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/twitter.png" /></a></li>
+                        <li><a href="http://twitter.com/<?php echo $options['social_twitter']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/twitter.png" /></a></li>
                     <?php endif; ?>   
                     <?php if ($options['social_feed']): ?>
                         <li><a href="<?php echo $options['social_feed']; ?>"><img src="<?php echo Router::url('/',true) ?>img/icon/rss.png" /></a></li>
@@ -200,7 +195,7 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-    
+
     </script>
   
 </body>

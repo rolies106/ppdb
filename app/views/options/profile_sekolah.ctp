@@ -1,4 +1,4 @@
-<div class="block_content grid_22 prefix_1 suffix_1">
+<div class="block_content grid_23 pal">
 <h2 class="page-title"><?php __('Profile Sekolah')?></h2>
 
 <div class="profile-desc">

@@ -1,4 +1,4 @@
-<div class="block_content grid_22 prefix_1 suffix_1">
+<div class="block_content grid_23 pal">
     
     <div class="message fsize14 mb40 <?php echo ($pass == 1) ? 'success' : 'failed';?>">
         <?php echo $msg; ?>

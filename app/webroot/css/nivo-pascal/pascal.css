@@ -11,16 +11,15 @@ Author URI: http://dev7studios.com
 */
 
 .theme-pascal.slider-wrapper {
-    height:255px;
+    height:320px;
     margin:0 auto;
     position:relative;
 }
 
 .theme-pascal .nivoSlider {
     position:relative;
-    width:934px;
-    height:235px;
-    margin-left:12px;
+    width:958px;
+    height:300px;
     background:url(loading.gif) no-repeat 50% 50%;
 }
 .theme-pascal .nivoSlider img {
@@ -28,8 +27,8 @@ Author URI: http://dev7studios.com
     top:0px;
     left:0px;
     display:none;
-    width:630px; /* Make sure your images are the same size */
-    height:235px; /* Make sure your images are the same size */
+    width:958px; /* Make sure your images are the same size */
+    height:300px; /* Make sure your images are the same size */
 }
 .theme-pascal .nivoSlider a {
     border:0;
