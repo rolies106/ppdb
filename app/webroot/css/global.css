@@ -367,6 +367,10 @@ footer
     margin-right: 10px;
 }
 
+.posts_list li img {
+	width: 60px;
+}
+
 .posts_list li .title {
     display: block;
     font-size: 12px;
