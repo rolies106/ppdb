@@ -37,7 +37,7 @@
 </tr>
 <tr>
     <td><?php __('Total Nilai')?></td>
-    <td colspan="2">: <b><?php e($totalNilai); ?></b></td>
+    <td colspan="2">: <b><?php e(number_format($totalNilai, 2)); ?></b></td>
 </tr>
 <tr>
     <td><?php __('Dinyatakan')?></td>

@@ -248,7 +248,7 @@ class RegistrationsController extends AppController {
         }
         
         $dataSiswa = $this->Registration->find('first',array('recursive' => 1, 'conditions'=>array('Registration.nisn'=>$nisn)));
-        $totalNilai = $dataSiswa['TestScore']['academic'] + $dataSiswa['TestScore']['english'] + $dataSiswa['TestScore']['computer'] + $dataSiswa['TestScore']['interview'] + $dataSiswa['TestScore']['uasbn'];
+        $totalNilai = ($dataSiswa['TestScore']['academic'] * 0.4) + ($dataSiswa['TestScore']['english'] * 0.1) + ($dataSiswa['TestScore']['computer'] * 0.1) + ($dataSiswa['TestScore']['interview'] * 0.05) + ($dataSiswa['TestScore']['uasbn'] * 0.35);
 
         $this->set(compact('dataSiswa', 'option', 'next_year', 'totalNilai'));
     }
@@ -326,7 +326,7 @@ class RegistrationsController extends AppController {
 		$next_year = $option['tahunPelajaran'] + 1;
 
 		define('PDF_HEADER_TITLE_C', 'PEMERINTAH ' . strtoupper($option['kota']));		
-		define('PDF_HEADER_STRING_C', "DINAS PENDIDIKAN \n" . strtoupper($option['nama_sekolah']) . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi'] . " \nemail: " . $option['email'] . " website: " . $option['web']);
+		define('PDF_HEADER_STRING_C', "DINAS PENDIDIKAN \n" . strtoupper($option['nama_sekolah']) . " \n" . $option['alamat'] . " Tel. " . $option['no_telp'] . " \nFax. " . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi'] . " \nemail: " . $option['email'] . " \nwebsite: " . $option['web']);
     	define('PDF_PAGE_FORMAT_C', 'A6');
 		define('PDF_MARGIN_LEFT_C', '5');
 		define('PDF_MARGIN_RIGHT_C', '5');
