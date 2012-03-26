@@ -2,7 +2,7 @@
 <?php #$javascript->link('mylibs/jquery.carouFredSel-3.2.0', false); ?>
 <?php $javascript->link('mylibs/jquery.nivo.slider.pack', false); ?>
 <?php $javascript->link('home/application', false); ?>
-
+        
         <?php if(!empty($features)): ?>
         
         <div class="top_container relative top-border-radius css3pie">

@@ -246,9 +246,9 @@ class RegistrationsController extends AppController {
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
-        
+
         $dataSiswa = $this->Registration->find('first',array('recursive' => 1, 'conditions'=>array('Registration.nisn'=>$nisn)));
-        $totalNilai = $dataSiswa['TestScore']['academic'] + $dataSiswa['TestScore']['english'] + $dataSiswa['TestScore']['computer'] + $dataSiswa['TestScore']['interview'] + $dataSiswa['TestScore']['uasbn'];
+        $totalNilai = number_format(($dataSiswa['TestScore']['academic'] * 0.6) + ($dataSiswa['TestScore']['english'] * 0.2) + ($dataSiswa['TestScore']['computer'] * 0.2), 2); #+ ($dataSiswa['TestScore']['interview'] * 0.05) + ($dataSiswa['TestScore']['uasbn'] * 0.35), 2);
 
         $this->set(compact('dataSiswa', 'option', 'next_year', 'totalNilai'));
     }
@@ -629,7 +629,13 @@ class RegistrationsController extends AppController {
     function member_profile() {
 
         $this->loadModel('User');
+        $this->loadModel('Option');
         $id = $this->Auth->user('id');
+
+        $option = array(
+            'nilai_minimal_mapel' => $this->Option->getValue('nilai_minimal_mapel'),
+        );
+
         if (!empty($id)) {
             $conditionDetail = array('Registration.user_id' => $id);
             $studentDetail = $this->Registration->find('first', array('conditions' => $conditionDetail, 'recursive' => 1));     
@@ -641,7 +647,7 @@ class RegistrationsController extends AppController {
             $studentDetail = NULL;
         }
         
-        $this->set(compact('studentDetail','dataNilai'));
+        $this->set(compact('studentDetail','dataNilai', 'option'));
 
 /*        if (empty($this->data)) {
             $this->data = $this->User->read();

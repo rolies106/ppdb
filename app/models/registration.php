@@ -132,7 +132,7 @@ class Registration extends AppModel {
                 }
             }
 
-            // Validasi Nilai Matematika
+            // Validasi Nilai IPA
             $nilai_ipa = true;
             foreach ($data['RegistrationScore'][5] as $key => $nilai) {
                 if ($key != 'mapel_id') {

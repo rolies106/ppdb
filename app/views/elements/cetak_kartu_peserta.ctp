@@ -95,7 +95,12 @@ p.space { margin-bottom: 10px;}
         <td class="pas_photo"><br /><br /><br /><br />Pas Photo<br />3x4</td>
         <td width="180px" align="center">
 			<?php echo $option['kecamatan']; ?>, ...............................<?php echo date('Y');?><br />
-			Panitia PPDB Online TP. <?php echo $option['tahunPelajaran'].'/'.$option['nextTahunPelajaran']; ?>
+			<?php
+			
+				// Panitia PPDB Online TP. <?php echo $option['tahunPelajaran'].'/'.$option['nextTahunPelajaran'];
+			
+			?>
+			Kepala Sekolah,
 			<br /><br /><br /><br /><br />
             <?php echo $option['panitia']; ?>
         </td>
@@ -110,11 +115,11 @@ p.space { margin-bottom: 10px;}
     </tr>
     <tr>
         <td>2.</td>
-        <td><?php __('Tes seleksi akademik tgl, '.$option['tanggal_seleksi_akademik'])?></td>
+        <td><?php __('Tes seleksi akademik tgl, '. $dateFormat->changeDateFormat($option['tanggal_seleksi_akademik']) )?></td>
     </tr>
     <tr>
         <td>3.</td>
-        <td><?php __('Psikotes dilaksanakan tgl, '.$option['tanggal_psikotes'])?></td>
+        <td><?php __('Psikotes dilaksanakan tgl, '. $dateFormat->changeDateFormat($option['tanggal_psikotes']) )?></td>
     </tr>
     <tr>
         <td>4.</td>
