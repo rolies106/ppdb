@@ -8,6 +8,7 @@
 class Registration extends AppModel {
     var $name = 'Registration';
     var $hasMany = array('RegistrationScore' => array('dependent'=>true));
+    var $hasOne = array('TestScore');
     var $belongsTo  = array('User');
     
     var $validate = array(
@@ -131,7 +132,7 @@ class Registration extends AppModel {
                 }
             }
 
-            // Validasi Nilai Matematika
+            // Validasi Nilai IPA
             $nilai_ipa = true;
             foreach ($data['RegistrationScore'][5] as $key => $nilai) {
                 if ($key != 'mapel_id') {
@@ -165,7 +166,6 @@ class Registration extends AppModel {
     
     function setVerificationDate($dates = null, $group_siswa){
         $last_count = $this->find('count',array('conditions'=>array('Registration.passed_by_register'=>1)));
-        //$verification_start = $this->Option->getValue('tanggal_mulai_verifikasi');
         $last_count += 1;
         
         $selisih = $this->checkSelisihTanggal($dates);
@@ -193,26 +193,13 @@ class Registration extends AppModel {
             $date++;
         }
 
-
-
         $now = strtotime(date('Y-m-d'));
         $date = strtotime($verify_date);
 
         if ($now > $date) {
             $verify_date = date('Y-m-d', $now + (60*60*24));
-
-            while ($true = false) {
-                $count = $this->find('count',array('conditions'=>array('Registration.passed_by_register'=>1, 'Registration.tanggal_verifikasi'=>$verify_date)));
-
-                if ($count < $group) {
-                    $verify_date = $verify_date;
-                    $true = true;
-                } else {
-                    $verify_date = date('Y-m-d', $now + (60*60*24));
-                }
-            }
         }
-
+                
         return $verify_date;
         //echo $verify_date.' '.$group.' '.$d;
     }
@@ -221,7 +208,6 @@ class Registration extends AppModel {
         $tgl1 = $dates['date1'];
         $tgl2 = $dates['date2'];
         
-        /* Commented the old ways
         // memecah tanggal untuk mendapatkan bagian tanggal, bulan dan tahun
         // dari tanggal pertama
         
@@ -244,15 +230,8 @@ class Registration extends AppModel {
         $jd2 = GregorianToJD($month2, $date2, $year2);
         
         // hitung selisih hari kedua tanggal
-        $selisih = $jd2 - $jd1;
         
         return $selisih = $jd2 - $jd1;
-        */
-
-        $diff = (abs(strtotime($tgl2) - strtotime($tgl1))) / (60*60*24);
-
-        return $diff;
-
     }
 
     function checkDateInRange($start_date, $end_date, $date_from_user)
@@ -265,7 +244,7 @@ class Registration extends AppModel {
         // Check that user date is between start & end
         return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
     }
-        
+    
     function isRegistrationOpened($date){
         # Old ways
         # @author Resa Rahman

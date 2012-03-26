@@ -199,6 +199,21 @@
             <?php endif; ?>
         </fieldset>
 
+        <?php
+            $rataNilaiTest = ($studentDetail['TestScore']['academic'] * 0.6) + ($studentDetail['TestScore']['english'] * 0.2) + ($studentDetail['TestScore']['computer'] * 0.2);
+            if ($rataNilaiTest >= $option['nilai_minimal_mapel']):
+        ?>
+
+        <fieldset><legend><?php __('Print Kelengkapan'); ?></legend>
+            <div class="row">
+                <span class="notice"><?php echo $this->Html->link(__('Formulir Pendaftaran',true),array('member' => false,'controller'=>'registrations','action'=>'cetakDocPendaftaran',$studentDetail['Registration']['nisn']),array('class'=>'', 'target' => '_blank')); ?></span>
+                <span class="notice"><?php echo $this->Html->link(__('Surat Pernyataan',true),array('member' => false,'controller'=>'registrations','action'=>'cetakDocPernyataan',$studentDetail['Registration']['nisn']),array('class'=>'', 'target' => '_blank')); ?></span>
+                <span class="notice"><?php echo $this->Html->link(__('Nilai Raport',true),array('member' => false,'controller'=>'registrations','action'=>'cetakDocNilai',$studentDetail['Registration']['nisn']),array('class'=>'', 'target' => '_blank')); ?></span>
+                <span class="notice"><?php echo $this->Html->link(__('Kartu Peserta',true),array('member' => false,'controller'=>'registrations','action'=>'printKartuPeserta',$studentDetail['Registration']['nisn']),array('class'=>'', 'target' => '_blank')); ?></span>
+            </div>
+        </fieldset>
+
+        <?php endif; ?>
     </div>
 </div>
 </div>

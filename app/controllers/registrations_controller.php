@@ -246,9 +246,9 @@ class RegistrationsController extends AppController {
         {
             $this->redirect(array('admin'=>false,'controller'=>'registrations','action'=>'add'));
         }
-        
+
         $dataSiswa = $this->Registration->find('first',array('recursive' => 1, 'conditions'=>array('Registration.nisn'=>$nisn)));
-        $totalNilai = ($dataSiswa['TestScore']['academic'] * 0.4) + ($dataSiswa['TestScore']['english'] * 0.1) + ($dataSiswa['TestScore']['computer'] * 0.1) + ($dataSiswa['TestScore']['interview'] * 0.05) + ($dataSiswa['TestScore']['uasbn'] * 0.35);
+        $totalNilai = number_format(($dataSiswa['TestScore']['academic'] * 0.6) + ($dataSiswa['TestScore']['english'] * 0.2) + ($dataSiswa['TestScore']['computer'] * 0.2), 2); #+ ($dataSiswa['TestScore']['interview'] * 0.05) + ($dataSiswa['TestScore']['uasbn'] * 0.35), 2);
 
         $this->set(compact('dataSiswa', 'option', 'next_year', 'totalNilai'));
     }
@@ -326,7 +326,7 @@ class RegistrationsController extends AppController {
 		$next_year = $option['tahunPelajaran'] + 1;
 
 		define('PDF_HEADER_TITLE_C', 'PEMERINTAH ' . strtoupper($option['kota']));		
-		define('PDF_HEADER_STRING_C', "DINAS PENDIDIKAN \n" . strtoupper($option['nama_sekolah']) . " \n" . $option['alamat'] . " Tel. " . $option['no_telp'] . " \nFax. " . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi'] . " \nemail: " . $option['email'] . " \nwebsite: " . $option['web']);
+		define('PDF_HEADER_STRING_C', "DINAS PENDIDIKAN \n" . strtoupper($option['nama_sekolah']) . " \n" . $option['alamat'] . " Tel/Fax " . $option['no_telp'] . "/" . $option['no_faks'] . " " . $option['kecamatan'] . " " . $option['kodepos'] . " \n" . $option['kota'] . " " . $option['propinsi'] . " \nemail: " . $option['email'] . " website: " . $option['web']);
     	define('PDF_PAGE_FORMAT_C', 'A6');
 		define('PDF_MARGIN_LEFT_C', '5');
 		define('PDF_MARGIN_RIGHT_C', '5');
@@ -629,7 +629,13 @@ class RegistrationsController extends AppController {
     function member_profile() {
 
         $this->loadModel('User');
+        $this->loadModel('Option');
         $id = $this->Auth->user('id');
+
+        $option = array(
+            'nilai_minimal_mapel' => $this->Option->getValue('nilai_minimal_mapel'),
+        );
+
         if (!empty($id)) {
             $conditionDetail = array('Registration.user_id' => $id);
             $studentDetail = $this->Registration->find('first', array('conditions' => $conditionDetail, 'recursive' => 1));     
@@ -641,7 +647,7 @@ class RegistrationsController extends AppController {
             $studentDetail = NULL;
         }
         
-        $this->set(compact('studentDetail','dataNilai'));
+        $this->set(compact('studentDetail','dataNilai', 'option'));
 
 /*        if (empty($this->data)) {
             $this->data = $this->User->read();

@@ -91,8 +91,8 @@
                                         <?php echo $this->Form->input('academic', array('label'=>__('Akademik',true), 'value'=>$data['TestScore']['academic'])); ?>
                                         <?php echo $this->Form->input('english', array('label'=>__('Bhs. Inggris',true), 'value'=>$data['TestScore']['english'])); ?>
                                         <?php echo $this->Form->input('computer', array('label'=>__('Komputer',true), 'value'=>$data['TestScore']['computer'])); ?>
-                                        <?php echo $this->Form->input('interview', array('label'=>__('Wawancara',true), 'value'=>$data['TestScore']['interview'])); ?>
-                                        <?php echo $this->Form->input('uasbn', array('label'=>__('UASBN',true), 'value'=>$data['TestScore']['uasbn'])); ?>
+                                        <?php #echo $this->Form->input('interview', array('label'=>__('Wawancara',true), 'value'=>$data['TestScore']['interview'])); ?>
+                                        <?php #echo $this->Form->input('uasbn', array('label'=>__('UASBN',true), 'value'=>$data['TestScore']['uasbn'])); ?>
                                         <?php echo $this->Form->input('desc', array('label'=>__('Ket',true), 'value'=>$data['TestScore']['desc'])); ?>
 
                                         <img src="<?php echo Router::url('/'); ?>img/loading.gif" class="loadingimg none" />
