@@ -1,3 +1,5 @@
+<?php $javascript->link(array('mylibs/jquery.form'), false); ?>
+
 <div class="grid_24">
     <h2>
         <?php __('Data Calon Siswa yang mendaftar:')?>
@@ -23,23 +25,38 @@
         </form>
     </div>
 
-    <table id="dataSiswaTable" class="display">
+<?php echo $this->Form->create(null,array('url'=>array('admin' => true, 'controller' => 'registrations', 'action'=>'dataSiswa'), 'class' => 'filterform subform')) ?>
+<?php echo $this->Form->input('nisn'); ?>
+<?php echo $this->Form->input('nama', array('label' => __('Nama Calon', true))); ?>
+<?php echo $this->Form->input('asal_sekolah'); ?>
+<div class="input">
+    <label for="RegistrationPassedByRegister">Lolos tahap registrasi</label>
+    <?php echo $this->Form->select('passed_by_register', 
+                                   array('1'=>__('Lolos',true), '0' => __('Tidak Lolos',true)));
+    ?>
+</div>
+<?php echo $this->Form->end('Search'); ?>
+
+
+    <div id="testFormMessages" class="message none"></div>
+
+    <table class="display listing dataSiswaTable">
         <thead>
             <tr>
                 <th><?php __('No.')?></th>
-                <th><?php __('No. Peserta')?>
-                <th><?php __('NISN')?></th>
-                <th><?php __('Nama Calon Siswa')?></th>
-                <th><?php __('Asal Sekolah')?></th>
-                <th><?php __('Jenis Kelamin')?></th>
-                <th><?php __('Tanggal Verifikasi')?></th>
+                <th><?php echo $this->Paginator->sort(__('No. Peserta', true), 'id', array('url'=>array($url))); ?></th>
+                <th><?php echo $this->Paginator->sort(__('NISN', true), 'nisn', array('url'=>array($url))); ?></th>
+                <th><?php echo $this->Paginator->sort(__('Nama Calon Siswa', true), 'nama', array('url'=>array($url))); ?></th>
+                <th><?php echo $this->Paginator->sort(__('Asal Sekolah', true), 'asal_sekolah', array('url'=>array($url))); ?></th>
+                <th><?php echo $this->Paginator->sort(__('Jenis Kelamin', true), 'gender', array('url'=>array($url))); ?></th>
+                <th><?php echo $this->Paginator->sort(__('Tanggal Verifikasi', true), 'tanggal_verifikasi', array('url'=>array($url))); ?></th>
                 <th><?php __('Edit')?></th>
                 <th><?php __('Delete')?></th>
             </tr>
         </thead>
         
         <tbody>
-            <?php $no = 1; ?>
+            <?php $no = ($page * 10) - 9; ?>
     		<?php
     			if (!empty($studentsReg)) {
     				foreach($studentsReg as $data) {
@@ -48,7 +65,7 @@
     						<td><?php echo $no; ?></td>
     						<td><?php echo $data['Registration']['id']?></td>
                             <td><?php echo $data['Registration']['nisn']; ?></td>
-    						<td class="link">
+    						<td class="link textleft">
 								<?php echo $this->Html->link($data['Registration']['nama'],array('admin'=>true,'controller'=>'registrations','action'=>'detailCalonSiswa', $data['Registration']['id'])); ?>
 							</td>
                             <td><?php echo $data['Registration']['asal_sekolah']; ?></td>
@@ -64,6 +81,14 @@
     		?>
         </tbody>
     </table>
-    
+
+<div class="navigation">
+    <?php echo $this->Paginator->prev('« Previous', array('url'=>array($url)), null, array('class' => 'disabled')); ?>
+    <?php echo $this->Paginator->numbers(array('url'=>array($url))); ?>
+    <?php echo $this->Paginator->next('Next »', array('url'=>array($url)), null, array('class' => 'disabled')); ?>
+    <div class="page-counter">
+        Page <?php echo $this->Paginator->counter(); ?>
+    </div>
+</div>
 </div>
 <div class="clear"></div>

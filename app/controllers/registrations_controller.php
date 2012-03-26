@@ -7,6 +7,7 @@
  
 class RegistrationsController extends AppController {
     var $name = 'Registrations';
+    var $components = array('Filter'); 
 
     function beforeFilter(){
         parent::beforeFilter();
@@ -325,7 +326,19 @@ class RegistrationsController extends AppController {
 		$option['tahunPelajaran'] = $this->Option->getValue('tahun_pelajaran');
 
         $conditionsReg = array('Registration.tahun_pelajaran' => $option['tahunPelajaran']);
-		$studentsReg = $this->Registration->find('all', array('conditions' => $conditionsReg, 'recursive' => 1, 'order'=> array('Registration.register_date' => 'DESC')));
+		#$studentsReg = $this->Registration->find('all', array('conditions' => $conditionsReg, 'recursive' => 1, 'order'=> array('Registration.register_date' => 'DESC')));
+		#$studentsReg = $this->paginate('Registration', array('conditions' => $conditionsReg, 'recursive' => 1, 'order'=> array('Registration.register_date' => 'DESC')));
+
+        $this->paginate = array(
+            'conditions' => $conditionsReg,
+            'recursive' => 1,
+            'limit' => 10
+        );
+
+        $filter = $this->Filter->process($this);  
+        $this->set('url',$this->Filter->url);  
+
+        $studentsReg = $this->paginate('Registration', $filter);
 		
 		$this->set(compact('studentsReg'));
 	}
