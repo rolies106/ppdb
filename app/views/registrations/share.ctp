@@ -6,6 +6,32 @@
     
     <?php if($pass == 1): ?>
     
+    <div class="message txtleft mbl">
+        <p>
+            Adapun dokumen yang perlu dibawa pada saat verifikasi antara lain :
+            <ul>
+                <li class="fsize12">Surat Pernyataan (cetak via web)</li>
+                <li class="fsize12">Formulir Pendaftaran (cetak via web)</li>
+                <li class="fsize12">Nilai Rapor (cetak via web)</li>
+                <li class="fsize12">Rapor Asli</li>
+                <li class="fsize12">Legalisir Rapor Kelas IV s.d Kelas VI (1 set)</li>
+                <li class="fsize12">Surat Keterangan Kelakuan Baik (SKKB) dari Kepala SD/MI asal (1 Lembar)</li>
+                <li class="fsize12">Surat Keterangan bahwa yang bersangkutan merupakan siswa kelas VI dari Kepala SD/MI asal (1 Lembar)</li>
+                <li class="fsize12">Foto ukuran 2X3 = 2 lembar dan 3X4 = 2 lembar berwarna dan berseragam sekolah asal</li>
+                <li class="fsize12">
+                    Menyerahkan surat keterangan lain sebagai pendukung (jika ada) seperti :
+                    <ol>
+                        <li class="fsize12">Sertifikat Bhs. Inggris, Komputer, dll.</li>
+                        <li class="fsize12">Sertifikat Prestasi Akademik minimal Juara 1 Tingkat Kab/Kota.</li>
+                        <li class="fsize12">Sertifikat Prestasi Non-Akademik minimal Juara 1 Tingkat Kab/Kota.</li>
+                        <li class="fsize12">Piagam Penghargaan atau Surat keterangan dari Kepala Sekolah asal sebagai Juara Umum dua Tahun berturut-turut di kelas V dan VI.</li>
+                    </ol>
+                </li>
+                <li class="fsize12">Bagi calon peserta didik yang berasal dari SD/MI Luar Kabupaten Bekasi, wajib membawa surat verifikasi dari Dinas Pendidikan setempat</li>
+            </ul>
+        </p>
+    </div>
+
     <h2 class="helvetica">
         <?php __('Cetak Document')?>
     </h2>

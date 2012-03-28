@@ -118,6 +118,7 @@ article, p  {font-size: 12px;}
    float: right;
 }
 .center{text-align:center;}
+.txtleft{text-align:left !important;}
 .txtright{text-align:right;}
 .txtcenter{text-align:center;}
 .border-radius {
@@ -212,6 +213,7 @@ article, p  {font-size: 12px;}
 /* Font size
 ----------------------------------------*/
 .fsize11{font-size:11px;}
+.fsize12{font-size:12px;}
 .fsize14{font-size:14px;}
 .fsize18{font-size: 18px;}
 .fsize18bold{font-size: 18px;font-weight:bold;}

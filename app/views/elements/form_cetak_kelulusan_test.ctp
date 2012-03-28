@@ -100,16 +100,18 @@
         NIP. <?php e($option['kepsek_nip'])?>
     </td>
 </tr>
-<tr>
-    <td colspan="3">
-    <p>
-        <small><?php __('Catatan :')?><br/>
-        <ol>
-            <li>Bagi siswa yang dinyatakan diterima agar :<ol><li>Mendaftar Ulang yang dimulai dari tanggal <?php e($dateFormat->changeDateFormat($option['tanggal_mulai_verifikasi'], 'dateFormat=d-m-Y')); ?> s.d <?php e($dateFormat->changeDateFormat($option['tanggal_selesai_verifikasi'], 'dateFormat=d-m-Y')); ?>, Pkl 08.00 s.d 14.00 WIB</li><li>Melengkapi persyaratan sebagaimana terdapat pada lampiran ini</li></ol></li>
-            <li>Bagi siswa yang dinyatakan diterima tetapi tidak mendaftar ulang pada waktu yang ditentukan dianggap mengundurkan diri.</li>
-        </ol>
-        </small>
-    </p>
-    </td>
-</tr>
+<?php if ($totalNilai >= $option['nilai_minimal_test']): ?>
+    <tr>
+        <td colspan="3">
+        <p>
+            <small><?php __('Catatan :')?><br/>
+            <ol>
+                <li>Bagi siswa yang dinyatakan diterima agar :<ol><li>Mendaftar Ulang yang dimulai dari tanggal <?php e($dateFormat->changeDateFormat($option['tanggal_mulai_verifikasi'], 'dateFormat=d-m-Y')); ?> s.d <?php e($dateFormat->changeDateFormat($option['tanggal_selesai_verifikasi'], 'dateFormat=d-m-Y')); ?>, Pkl 08.00 s.d 14.00 WIB</li><li>Melengkapi persyaratan sebagaimana terdapat pada lampiran ini</li></ol></li>
+                <li>Bagi siswa yang dinyatakan diterima tetapi tidak mendaftar ulang pada waktu yang ditentukan dianggap mengundurkan diri.</li>
+            </ol>
+            </small>
+        </p>
+        </td>
+    </tr>
+<?php endif; ?>
 </table>
